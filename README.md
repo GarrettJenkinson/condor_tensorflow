@@ -40,11 +40,11 @@ This is a quick example to show a basic model implementation. With actual data o
 ```python
 import condor_tensorflow as condor
 NUM_CLASSES = 5
-# Ordinal labels variable has 5 labels, 0 through 4.
+# Ordinal 'labels' variable has 5 labels, 0 through 4.
 enc_labs = condor.CondorOrdinalEncoder(nclasses=NUM_CLASSES).fit_transform(labels)
 model = tf.keras.Sequential()
 model.add(tf.keras.layers.Dense(32, activation = "relu"))
-model.add(tf.keras.layers.Dense(NUM_CLASSES-1)) 
+model.add(tf.keras.layers.Dense(NUM_CLASSES-1)) # Note the "-1"
 model.compile(loss = condor.CondorOrdinalCrossEntropy(num_classes = NUM_CLASSES),
               metrics = [condor.MeanAbsoluteErrorLabels()])
 model.fit(x = X, y = enc_labs)
@@ -54,7 +54,7 @@ model.fit(x = X, y = enc_labs)
 
 Please post any issues to the [issue queue](https://github.com/GarrettJenkinson/condor_tensorflow/issues). 
 
-**Acknowledgments**: Many thanks to [the coral ordinal tensorflow authors]((https://github.com/ck37/coral-ordinal) whose repo was a roadmap for this codebase.
+**Acknowledgments**: Many thanks to [the coral ordinal tensorflow authors](https://github.com/ck37/coral-ordinal) whose repo was a roadmap for this codebase.
 
 Key pending items:
 
