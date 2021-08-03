@@ -1,0 +1,43 @@
+site_name: condor_tensorflow
+site_url: http://GarrettJenkinson.github.io/condor_tensorflow
+site_author: Garrett Jenkinson
+site_description: condor_tensorflow is a package implementing the CONDOR tensorflow utilities.
+
+repo_url: https://github.com/GarrettJenkinson/condor_tensorflow
+
+#include_search: true
+#theme: yeti
+
+docs_dir: docs
+site_favicon: favicon.ico
+
+# install via pip install mkdocs-material
+theme: material
+
+markdown_extensions:
+  - pymdownx.highlight # syntax highlighting
+  - pymdownx.superfences # syntax highlighting
+  - tables
+  - fenced_code
+  - mdx_math:
+      enable_dollar_delimiter: True # for use of inline $..$
+extra_javascript:
+  - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML
+  - mathjaxhelper.js
+extra_css:
+  - extra.css
+
+copyright: Copyright &copy; 2021 <a href="http://github.com/GarrettJenkinson">Garrett Jenkinson</a>
+
+nav:
+    - Home: index.md
+    - Tutorials:
+      - MNIST: tutorials/mnist.md
+      - Poker Hands: tutorials/poker.md
+    - API:
+          - condor_tensorflow.dataset: api_subpackages/condor_tensorflow.dataset.md
+          - condor_tensorflow.losses: api_subpackages/condor_tensorflow.losses.md
+    - Installation: installation.md
+    - Changelog: changelog.md
+    - Citing: citing.md
+    - License: license.md
