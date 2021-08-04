@@ -9,14 +9,10 @@ repo_url: https://github.com/GarrettJenkinson/condor_tensorflow
 #theme: yeti
 
 docs_dir: docs
-site_favicon: favicon.ico
 
-# install via pip install mkdocs-material
-theme: material
+theme: readthedocs
 
 markdown_extensions:
-  - pymdownx.highlight # syntax highlighting
-  - pymdownx.superfences # syntax highlighting
   - tables
   - fenced_code
   - mdx_math:
