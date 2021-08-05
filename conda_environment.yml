@@ -1,4 +1,4 @@
-name: conda_tensorflow
+name: condor_tensorflow
 channels:
   - conda-forge
   - defaults
