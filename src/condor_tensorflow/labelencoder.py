@@ -12,8 +12,8 @@ class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
         self.unknown_value = unknown_value
 
     def fit(self, X, y=None):
-        """
-        Fit the CondorOrdinalEncoder to X.
+        """Fit the CondorOrdinalEncoder to X.
+
         Parameters
         ----------
         X : array-like of shape (n_samples, n_features)
@@ -21,6 +21,7 @@ class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
         y : None
             Ignored. This parameter exists only for compatibility with
             :class:`~sklearn.pipeline.Pipeline`.
+
         Returns
         -------
         self
@@ -38,12 +39,13 @@ class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X):
-        """
-        Transform X to ordinal arrays.
+        """Transform X to ordinal arrays.
+
         Parameters
         ----------
         X : array-like of shape (n_samples, n_features)
             The data to encode.
+
         Returns
         -------
         X_out : ndarray of shape (n_samples, n_features)

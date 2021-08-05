@@ -12,13 +12,23 @@ class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
                **kwargs):
     """ Cross-entropy loss designed for ordinal outcomes.
 
-    Args:
-      num_classes: number of ranks (aka labels or values) in the ordinal variable.
-      importance_weights: (Optional) importance weights for each binary classification task.
-      from_type: one of "ordinal_logits" (default), "logits", or "probs".
-        Ordinal logits are the output of a CondorOrdinal() layer with no activation.
-        (Not yet implemented) Logits are the output of a dense layer with no activation.
-        (Not yet implemented) Probs are the probability outputs of a softmax or ordinal_softmax layer.
+    Parameters
+    ----------
+    num_classes: int
+        number of ranks (aka labels or values) in the ordinal variable
+
+    importance_weights: tf or np array of floats, shape(numclasses-1,)
+        (Optional) importance weights for each binary classification task.
+
+    from_type: one of "ordinal_logits" (default), or "probs".
+      Ordinal logits are the output of a Dense(num_classes-1) layer with no activation.
+      (Not yet implemented) Probs are the probability outputs of a softmax or ordinal_softmax layer.
+
+    Returns
+    ----------
+    loss: tf.Tensor, shape=(num_samples,)
+        Loss vector, note that tensorflow will reduce it to a single number
+        automatically.
     """
     self.num_classes = num_classes
     self.importance_weights = importance_weights
@@ -82,6 +92,25 @@ class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
     return {**base_config, **config}
 
 def ordinal_loss(logits, levels, importance):
+    """ Cross-entropy loss function designed for ordinal outcomes.
+
+    Parameters
+    ----------
+    logits: tf.Tensor, shape=(num_samples,num_classes-1)
+        Logit output of the final Dense(num_classes-1) layer.
+
+    levels: tf.Tensor, shape=(num_samples, num_classes-1)
+        Encoded lables provided by CondorOrdinalEncoder.
+
+    importance_weights: tf or np array of floats, shape(numclasses-1,)
+        Importance weights for each binary classification task.
+
+    Returns
+    ----------
+    loss: tf.Tensor, shape=(num_samples,)
+        Loss vector, note that tensorflow will reduce it to a single number
+        automatically.
+    """
     logprobs = tf.math.cumsum(tf.math.log_sigmoid(logits), axis = 1)
     eps = tf.keras.backend.epsilon()
     val = (-tf.reduce_sum( importance *( logprobs * levels
