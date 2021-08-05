@@ -1,4 +1,4 @@
-name: orca
+name: conda_tensorflow
 channels:
   - conda-forge
   - defaults
