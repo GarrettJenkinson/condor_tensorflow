@@ -75,7 +75,7 @@ class EarthMoversDistanceLabels(tf.keras.metrics.Metric):
                     name="earth_movers_distance_labels",
                      condor_encoded=True,**kwargs):
     """Creates a `EarthMoversDistanceLabels` instance."""
-    super(MeanAbsoluteErrorLabels, self).__init__(name=name, **kwargs)
+    super(EarthMoversDistanceLabels, self).__init__(name=name, **kwargs)
     self.emds = self.add_weight(name='emds', initializer='zeros')
     self.count = self.add_weight(name='count', initializer='zeros')
     self.num_classes = tf.constant(num_classes,dtype=tf.float32)
