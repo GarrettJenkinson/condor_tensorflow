@@ -35,33 +35,33 @@ class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
 
     super().__init__(name = name, **kwargs)
 
-    def ordinal_loss(logits, levels, importance):
-        """ Cross-entropy loss function designed for ordinal outcomes.
+  def ordinal_loss(logits, levels, importance):
+      """ Cross-entropy loss function designed for ordinal outcomes.
 
-        Parameters
-        ----------
-        logits: tf.Tensor, shape=(num_samples,num_classes-1)
-            Logit output of the final Dense(num_classes-1) layer.
+      Parameters
+      ----------
+      logits: tf.Tensor, shape=(num_samples,num_classes-1)
+          Logit output of the final Dense(num_classes-1) layer.
 
-        levels: tf.Tensor, shape=(num_samples, num_classes-1)
-            Encoded lables provided by CondorOrdinalEncoder.
+      levels: tf.Tensor, shape=(num_samples, num_classes-1)
+          Encoded lables provided by CondorOrdinalEncoder.
 
-        importance_weights: tf or np array of floats, shape(numclasses-1,)
-            Importance weights for each binary classification task.
+      importance_weights: tf or np array of floats, shape(numclasses-1,)
+          Importance weights for each binary classification task.
 
-        Returns
-        ----------
-        loss: tf.Tensor, shape=(num_samples,)
-            Loss vector, note that tensorflow will reduce it to a single number
-            automatically.
-        """
-        logprobs = tf.math.cumsum(tf.math.log_sigmoid(logits), axis = 1)
-        eps = tf.keras.backend.epsilon()
-        val = (-tf.reduce_sum( importance *( logprobs * levels
-                                + (tf.math.log(1 - tf.math.exp(logprobs)+eps)*
-                                  (1 - levels)) ),
-                              axis = 1))
-        return val
+      Returns
+      ----------
+      loss: tf.Tensor, shape=(num_samples,)
+          Loss vector, note that tensorflow will reduce it to a single number
+          automatically.
+      """
+      logprobs = tf.math.cumsum(tf.math.log_sigmoid(logits), axis = 1)
+      eps = tf.keras.backend.epsilon()
+      val = (-tf.reduce_sum( importance *( logprobs * levels
+                              + (tf.math.log(1 - tf.math.exp(logprobs)+eps)*
+                                (1 - levels)) ),
+                            axis = 1))
+      return val
 
   # Following https://www.tensorflow.org/api_docs/python/tf/keras/losses/Loss
   def call(self, y_true, y_pred):
