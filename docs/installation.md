@@ -1,20 +1,21 @@
-# Installing `condor_pytorch`
+# Installing `condor_tensorflow`
 
 
 ## Requirements
 
-BioPandas requires the following software and packages:
+`condor_tensorflow` has been tested with the following software and packages:
 
-- [Python](https://www.python.org) >= 3.6
-- [PyTorch](http://www.pytorch.org) >= 1.5.0
-
+- [Python](https://www.python.org) == 3.9.6
+- [Tensorflow](http://www.tensorflow.org) == 2.4.1
+- [sklearn](https://scikit-learn.org/) == 0.24.2 
+- [numpy](https://numpy.org/) == 1.19.5 (newer versions currently incompatibile with tensorflow)
 
 ## PyPI
 
-You can install the latest stable release of `condor_pytorch` directly from Python's package index via `pip` by executing the following code from your command line:  
+You can install the latest stable release of `condor_tensorflow` directly from Python's package index via `pip` by executing the following code from your command line:  
 
 ```bash
-pip install condor_pytorch
+pip install condor_tensorflow
 ```
 
 
@@ -22,19 +23,9 @@ pip install condor_pytorch
 
 <br>
 
-You want to try out the latest features before they go live on PyPI? Install the `condor_pytorch` dev-version latest development version from the GitHub repository by executing
+You want to try out the latest features before they go live on PyPI? Install the `condor_tensorflow` dev-version latest development version from the GitHub repository by executing
 
 ```bash
-pip install git+git://github.com/GarrettJenkinson/condor_pytorch.git
+pip install git+git://github.com/GarrettJenkinson/condor_tensorflow.git
 ```
-
-<br>
-
-
-Alternatively, you download the package manually from [GitHub](https://github.com/GarrettJenkinson/pytorch_condor) via the [Dowload ZIP](https://github.com/GarrettJenkinson/condor_pytorch/archive/main.zip) button, unzip it, navigate into the package directory, and execute the following command:
-
-```bash
-python setup.py install
-```
-
 
