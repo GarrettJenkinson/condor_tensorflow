@@ -1,6 +1,7 @@
 from .version import __version__
 
 from .loss import CondorOrdinalCrossEntropy
+from .loss import SparseCondorOrdinalCrossEntropy
 from .metrics import MeanAbsoluteErrorLabels
 from .metrics import EarthMoversDistanceLabels
 from .activations import ordinal_softmax
@@ -12,6 +13,7 @@ __all__ = [
   'MeanAbsoluteErrorLabels',
   'EarthMoversDistanceLabels',
   'CondorOrdinalCrossEntropy',
+  'SparseCondorOrdinalCrossEntropy',
   'ordinal_softmax',
   'CondorOrdinalEncoder',
 ]
