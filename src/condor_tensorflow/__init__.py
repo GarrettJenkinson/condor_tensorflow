@@ -3,7 +3,9 @@ from .version import __version__
 from .loss import CondorOrdinalCrossEntropy
 from .loss import SparseCondorOrdinalCrossEntropy
 from .metrics import MeanAbsoluteErrorLabels
+from .metrics import SparseMeanAbsoluteErrorLabels
 from .metrics import EarthMoversDistanceLabels
+from .metrics import SparseEarthMoversDistanceLabels
 from .activations import ordinal_softmax
 from .labelencoder import CondorOrdinalEncoder
 
@@ -11,7 +13,9 @@ from .labelencoder import CondorOrdinalEncoder
 # be able to access:
 __all__ = [
   'MeanAbsoluteErrorLabels',
+  'SparseMeanAbsoluteErrorLabels',
   'EarthMoversDistanceLabels',
+  'SparseEarthMoversDistanceLabels',
   'CondorOrdinalCrossEntropy',
   'SparseCondorOrdinalCrossEntropy',
   'ordinal_softmax',
