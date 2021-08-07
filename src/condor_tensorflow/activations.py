@@ -25,7 +25,7 @@ def ordinal_softmax(x):
 
   # Convert the ordinal logits into cumulative probabilities.
   cum_probs = tf.concat([tf.ones((x.shape[0],1),dtype=tf.float32),
-                         tf.math.cumprod(tf.math.sigmoid(x), axis = 1),
+                         tf.math.cumprod(tf.math.sigmoid(tf.cast(x,tf.float32)), axis = 1),
                          tf.zeros((x.shape[0],1),dtype=tf.float32)],
                         1)
 
