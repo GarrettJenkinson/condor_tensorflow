@@ -3,13 +3,13 @@ from tensorflow.keras import backend as K
 from .activations import ordinal_softmax
 
 
-class MeanAbsoluteErrorLabels(tf.keras.metrics.Metric):
+class OrdinalMeanAbsoluteError(tf.keras.metrics.Metric):
   """Computes mean absolute error for ordinal labels."""
 
   def __init__(self, name="mean_absolute_error_labels",
                      **kwargs):
-    """Creates a `MeanAbsoluteErrorLabels` instance."""
-    super(MeanAbsoluteErrorLabels, self).__init__(name=name, **kwargs)
+    """Creates a `OrdinalMeanAbsoluteError` instance."""
+    super(OrdinalMeanAbsoluteError, self).__init__(name=name, **kwargs)
     self.maes = self.add_weight(name='maes', initializer='zeros')
     self.count = self.add_weight(name='count', initializer='zeros')
 
@@ -56,12 +56,12 @@ class MeanAbsoluteErrorLabels(tf.keras.metrics.Metric):
     return {**base_config, **config}
 
 
-class SparseMeanAbsoluteErrorLabels(MeanAbsoluteErrorLabels):
+class SparseOrdinalMeanAbsoluteError(OrdinalMeanAbsoluteError):
   """Computes mean absolute error for ordinal labels."""
 
   def __init__(self, name="mean_absolute_error_labels",
                      **kwargs):
-    """Creates a `MeanAbsoluteErrorLabels` instance."""
+    """Creates a `OrdinalMeanAbsoluteError` instance."""
     super().__init__(name=name, **kwargs)
 
   def update_state(self, y_true, y_pred, sample_weight=None):
@@ -96,21 +96,21 @@ class SparseMeanAbsoluteErrorLabels(MeanAbsoluteErrorLabels):
 
 """
 # WIP
-def MeanAbsoluteErrorLabels_v2(y_true, y_pred):
+def OrdinalMeanAbsoluteError_v2(y_true, y_pred):
   # There will be num_classes - 1 cumulative logits as columns of the tensor.
   num_classes = y_pred.shape[1] + 1
   probs = logits_to_probs(y_pred, num_classes)
 
-# RootMeanSquaredErrorLabels
+# RootMeanSquaredErrorOrdinal
 """
 
-class EarthMoversDistanceLabels(tf.keras.metrics.Metric):
+class OrdinalEarthMoversDistance(tf.keras.metrics.Metric):
   """Computes earth movers distance for ordinal labels."""
 
   def __init__(self,num_classes,
                     name="earth_movers_distance_labels",
                     **kwargs):
-    """Creates a `EarthMoversDistanceLabels` instance."""
+    """Creates a `OrdinalEarthMoversDistance` instance."""
     super().__init__(name=name, **kwargs)
     self.emds = self.add_weight(name='emds', initializer='zeros')
     self.count = self.add_weight(name='count', initializer='zeros')
@@ -159,12 +159,12 @@ class EarthMoversDistanceLabels(tf.keras.metrics.Metric):
     return {**base_config, **config}
 
 
-class EarthMoversDistanceLabels(tf.keras.metrics.Metric):
+class SparseOrdinalEarthMoversDistance(OrdinalEarthMoversDistance):
   """Computes earth movers distance for ordinal labels."""
 
   def __init__(self,num_classes,
                     **kwargs):
-    """Creates a `EarthMoversDistanceLabels` instance."""
+    """Creates a `SparseOrdinalEarthMoversDistance` instance."""
     super().__init__(num_classes, **kwargs)
 
   def update_state(self, y_true, y_pred, sample_weight=None):

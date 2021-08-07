@@ -2,20 +2,20 @@ from .version import __version__
 
 from .loss import CondorOrdinalCrossEntropy
 from .loss import SparseCondorOrdinalCrossEntropy
-from .metrics import MeanAbsoluteErrorLabels
-from .metrics import SparseMeanAbsoluteErrorLabels
-from .metrics import EarthMoversDistanceLabels
-from .metrics import SparseEarthMoversDistanceLabels
+from .metrics import OrdinalMeanAbsoluteError
+from .metrics import SparseOrdinalMeanAbsoluteError
+from .metrics import OrdinalEarthMoversDistance
+from .metrics import SparseOrdinalEarthMoversDistance
 from .activations import ordinal_softmax
 from .labelencoder import CondorOrdinalEncoder
 
 # if somebody does "from somepackage import *", this is what they will
 # be able to access:
 __all__ = [
-  'MeanAbsoluteErrorLabels',
-  'SparseMeanAbsoluteErrorLabels',
-  'EarthMoversDistanceLabels',
-  'SparseEarthMoversDistanceLabels',
+  'OrdinalMeanAbsoluteError',
+  'SparseOrdinalMeanAbsoluteError',
+  'OrdinalEarthMoversDistance',
+  'SparseOrdinalEarthMoversDistance',
   'CondorOrdinalCrossEntropy',
   'SparseCondorOrdinalCrossEntropy',
   'ordinal_softmax',
