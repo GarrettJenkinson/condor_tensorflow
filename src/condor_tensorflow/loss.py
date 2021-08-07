@@ -35,7 +35,7 @@ class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
 
     super().__init__(name = name, **kwargs)
 
-  def ordinal_loss(logits, levels, importance):
+  def ordinal_loss(self, logits, levels, importance):
       """ Cross-entropy loss function designed for ordinal outcomes.
 
       Parameters
