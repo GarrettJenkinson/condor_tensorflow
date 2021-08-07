@@ -32,7 +32,6 @@ class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
     self.num_classes = num_classes
     self.importance_weights = importance_weights
     self.from_type = from_type
-    self.labels_encoded=labels_encoded
 
     super().__init__(name = name, **kwargs)
 
@@ -107,7 +106,6 @@ class SparseCondorOrdinalCrossEntropy(CondorOrdinalCrossEntropy):
                num_classes,
                importance_weights = None,
                from_type = "ordinal_logits",
-               labels_encoded=True,
                name = "ordinal_crossent",
                **kwargs):
     """ Cross-entropy loss designed for ordinal outcomes.
