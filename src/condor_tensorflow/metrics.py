@@ -94,16 +94,6 @@ class SparseOrdinalMeanAbsoluteError(OrdinalMeanAbsoluteError):
     self.count.assign_add(tf.cast(tf.size(y_true),tf.float32))
 
 
-"""
-# WIP
-def OrdinalMeanAbsoluteError_v2(y_true, y_pred):
-  # There will be num_classes - 1 cumulative logits as columns of the tensor.
-  num_classes = y_pred.shape[1] + 1
-  probs = logits_to_probs(y_pred, num_classes)
-
-# RootMeanSquaredErrorOrdinal
-"""
-
 class OrdinalEarthMoversDistance(tf.keras.metrics.Metric):
   """Computes earth movers distance for ordinal labels."""
 
@@ -115,7 +105,6 @@ class OrdinalEarthMoversDistance(tf.keras.metrics.Metric):
     self.emds = self.add_weight(name='emds', initializer='zeros')
     self.count = self.add_weight(name='count', initializer='zeros')
     self.num_classes = tf.constant(num_classes,dtype=tf.float32)
-    self.condor_encoded = condor_encoded
 
   def update_state(self, y_true, y_pred, sample_weight=None):
     """Computes mean absolute error for ordinal labels.
@@ -131,10 +120,7 @@ class OrdinalEarthMoversDistance(tf.keras.metrics.Metric):
 
     cum_probs = ordinal_softmax(y_pred) #tf.math.cumprod(tf.math.sigmoid(y_pred), axis = 1)# tf.map_fn(tf.math.sigmoid, y_pred)
 
-    if self.condor_encoded:
-        y_true = tf.cast(tf.reduce_sum(y_true,axis=1), y_pred.dtype)
-    else:
-        y_true = tf.cast(y_true, y_pred.dtype)
+    y_true = tf.cast(tf.reduce_sum(y_true,axis=1), y_pred.dtype)
 
     # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
     y_true = tf.squeeze(y_true)
