@@ -1,8 +1,8 @@
-## MeanAbsoluteErrorLabels
+## SparseOrdinalEarthMoversDistance
 
-*MeanAbsoluteErrorLabels(*args, **kwargs)*
+*SparseOrdinalEarthMoversDistance(*args, **kwargs)*
 
-Computes mean absolute error for ordinal labels.
+Computes earth movers distance for ordinal labels.
 
 ### Methods
 
@@ -557,7 +557,7 @@ Computes mean absolute error for ordinal labels.
 
     Args:
     y_true: Cumulatiuve logits from CondorOrdinal layer.
-    y_pred: CondorOrdinal Encoded Labels.
+    y_pred: Sparse Labels with values in {0,1,...,num_classes-1}
     sample_weight (optional): Not implemented.
 
 <hr>

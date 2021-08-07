@@ -17,6 +17,7 @@ arguments (no ``*args`` or ``**kwargs``).
 *fit(X, y=None)*
 
 Fit the CondorOrdinalEncoder to X.
+
 **Parameters**
 
 - `X` : array-like of shape (n_samples, n_features)
@@ -27,6 +28,7 @@ Fit the CondorOrdinalEncoder to X.
 
     Ignored. This parameter exists only for compatibility with
     :class:`~sklearn.pipeline.Pipeline`.
+
 **Returns**
 
 self
@@ -109,11 +111,13 @@ Set the parameters of this estimator.
 *transform(X)*
 
 Transform X to ordinal arrays.
+
 **Parameters**
 
 - `X` : array-like of shape (n_samples, n_features)
 
     The data to encode.
+
 **Returns**
 
 - `X_out` : ndarray of shape (n_samples, n_features)

@@ -1,6 +1,6 @@
 ## CondorOrdinalCrossEntropy
 
-*CondorOrdinalCrossEntropy(num_classes, importance_weights=None, from_type='ordinal_logits', labels_encoded=True, name='ordinal_crossent', **kwargs)*
+*CondorOrdinalCrossEntropy(num_classes, importance_weights=None, from_type='ordinal_logits', name='ordinal_crossent', **kwargs)*
 
 Loss base class.
 
@@ -74,9 +74,26 @@ Returns the config dictionary for a `Loss` instance.
 
 <hr>
 
-*label_to_levels(label)*
+*ordinal_loss(logits, levels, importance)*
 
-None
+Cross-entropy loss function designed for ordinal outcomes.
+
+**Parameters**
+
+logits: tf.Tensor, shape=(num_samples,num_classes-1)
+    Logit output of the final Dense(num_classes-1) layer.
+
+    levels: tf.Tensor, shape=(num_samples, num_classes-1)
+    Encoded lables provided by CondorOrdinalEncoder.
+
+    importance_weights: tf or np array of floats, shape(numclasses-1,)
+    Importance weights for each binary classification task.
+
+**Returns**
+
+loss: tf.Tensor, shape=(num_samples,)
+    Loss vector, note that tensorflow will reduce it to a single number
+    automatically.
 
 ### Properties
 
