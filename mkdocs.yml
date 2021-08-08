@@ -28,12 +28,23 @@ copyright: Copyright &copy; 2021 <a href="http://github.com/GarrettJenkinson">Ga
 nav:
     - Home: index.md
     - Tutorials:
-      - MNIST: tutorials/mnist.md
       - Poker Hands: tutorials/poker.md
-    - API:
-          - condor_tensorflow.dataset: api_subpackages/condor_tensorflow.dataset.md
-          - condor_tensorflow.losses: api_subpackages/condor_tensorflow.losses.md
     - Installation: installation.md
-    - Changelog: changelog.md
+    - Changelog: CHANGELOG.md
     - Citing: citing.md
     - License: license.md
+    - API:
+          - condor_tensorflow.loss: api_subpackages/condor_tensorflow.loss.md
+          - condor_tensorflow.metrics: api_subpackages/condor_tensorflow.metrics.md
+          - condor_tensorflow.activations: api_subpackages/condor_tensorflow.activations.md
+          - condor_tensorflow.labelencoder: api_subpackages/condor_tensorflow.labelencoder.md
+          - condor_tensorflow.labelencoder.BaseEstimator: api_modules/condor_tensorflow.labelencoder/BaseEstimator.md
+          - condor_tensorflow.labelencoder.CondorOrdinalEncoder: api_modules/condor_tensorflow.labelencoder/CondorOrdinalEncoder.md
+          - condor_tensorflow.labelencoder.OrdinalEncoder: api_modules/condor_tensorflow.labelencoder/OrdinalEncoder.md
+          - condor_tensorflow.labelencoder.TransformerMixin: api_modules/condor_tensorflow.labelencoder/TransformerMixin.md
+          - condor_tensorflow.loss.CondorOrdinalCrossEntropy: api_modules/condor_tensorflow.loss/CondorOrdinalCrossEntropy.md
+          - condor_tensorflow.loss.SparseCondorOrdinalCrossEntropy: api_modules/condor_tensorflow.loss/SparseCondorOrdinalCrossEntropy.md
+          - condor_tensorflow.metrics.OrdinalEarthMoversDistance: api_modules/condor_tensorflow.metrics/OrdinalEarthMoversDistance.md
+          - condor_tensorflow.metrics.OrdinalMeanAbsoluteError: api_modules/condor_tensorflow.metrics/OrdinalMeanAbsoluteError.md
+          - condor_tensorflow.metrics.SparseOrdinalEarthMoversDistance: api_modules/condor_tensorflow.metrics/SparseOrdinalEarthMoversDistance.md
+          - condor_tensorflow.metrics.SparseOrdinalMeanAbsoluteError: api_modules/condor_tensorflow.metrics/SparseOrdinalMeanAbsoluteError.md
