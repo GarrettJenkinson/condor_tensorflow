@@ -11,10 +11,14 @@ We also have condor [implemented for pytorch](https://github.com/GarrettJenkinso
 
 This package includes:
 
-  * Ordinal tensorflow loss function: `CondorOrdinalCrossEntropy()`
-  * Ordinal tensorflow error metric: `MeanAbsoluteErrorLabels()`
-  * Ordinal tensorflow activation function: `ordinal_softmax()`
-  * Ordinal sklearn label encoder
+  * Ordinal tensorflow loss function: `CondorOrdinalCrossEntropy`
+  * Ordinal tensorflow error metric: `OrdinalMeanAbsoluteError`
+  * Ordinal tensorflow error metric: `OrdinalEarthMoversDistance`
+  * Ordinal tensorflow sparse loss function: `CondorSparseOrdinalCrossEntropy`
+  * Ordinal tensorflow sparse error metric: `SparseOrdinalMeanAbsoluteError`
+  * Ordinal tensorflow sparse error metric: `SparseOrdinalEarthMoversDistance`
+  * Ordinal tensorflow activation function: `ordinal_softmax`
+  * Ordinal sklearn label encoder: `CondorOrdinalEncoder`
 
 ## Installation
 
