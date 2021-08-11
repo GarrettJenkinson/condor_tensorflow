@@ -52,7 +52,7 @@ model = tf.keras.Sequential()
 model.add(tf.keras.layers.Dense(32, activation = "relu"))
 model.add(tf.keras.layers.Dense(NUM_CLASSES-1)) # Note the "-1"
 model.compile(loss = condor.CondorOrdinalCrossEntropy(num_classes = NUM_CLASSES),
-              metrics = [condor.MeanAbsoluteErrorLabels()])
+              metrics = [condor.OrdinalMeanAbsoluteError()])
 model.fit(x = X, y = enc_labs)
 ```
 
