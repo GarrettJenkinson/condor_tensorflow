@@ -37,6 +37,20 @@ pip install git+https://github.com/GarrettJenkinson/condor_tensorflow/
 ## Dependencies
 
 This package relies on Python 3.6+, Tensorflow 2.2+, sklearn, and numpy.
+For convenience we provide a Dockerfile that will build a container with
+`condor_tensorflow` as well as its dependencies. This can be used
+as 
+
+```bash
+# Create a docker image
+docker build -t cpu_tensorflow -f cpu.Dockerfile ./
+
+# run image to serve a jupyter notebook 
+docker run -it -p 8888:8888 --rm cpu_tensorflow
+
+# how to run bash inside container (with python that will have deps)
+docker run -u $(id -u):$(id -g) -it -p 8888:8888 --rm cpu_tensorflow bash
+```
 
 ## Example
 
