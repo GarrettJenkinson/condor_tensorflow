@@ -52,6 +52,9 @@ docker run -it -p 8888:8888 --rm cpu_tensorflow
 docker run -u $(id -u):$(id -g) -it -p 8888:8888 --rm cpu_tensorflow bash
 ```
 
+Assuming a GPU enabled machine with the NVIDIA drivers installed replace `cpu`
+above with `gpu`.
+
 ## Example
 
 This is a quick example to show a basic model implementation. With actual 
