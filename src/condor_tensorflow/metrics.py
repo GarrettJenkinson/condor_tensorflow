@@ -123,7 +123,7 @@ class OrdinalEarthMoversDistance(tf.keras.metrics.Metric):
     y_true = tf.cast(tf.reduce_sum(y_true,axis=1), y_pred.dtype)
 
     # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
-    y_true = tf.squeeze(y_true)
+    #y_true = tf.squeeze(y_true)
 
     y_dist = tf.map_fn(fn=lambda y: tf.abs(y-tf.range(self.num_classes)),
                        elems=y_true)
@@ -170,7 +170,7 @@ class SparseOrdinalEarthMoversDistance(OrdinalEarthMoversDistance):
     y_true = tf.cast(y_true, y_pred.dtype)
 
     # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
-    y_true = tf.squeeze(y_true)
+    #y_true = tf.squeeze(y_true)
 
     y_dist = tf.map_fn(fn=lambda y: tf.abs(y-tf.range(self.num_classes)),
                        elems=y_true)
