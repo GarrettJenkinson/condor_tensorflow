@@ -33,6 +33,8 @@ class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
                                       dtype=self.dtype,
                                       handle_unknown=self.handle_unknown,
                                       unknown_value=self.unknown_value)
+            if isinstance(X, list):
+                X=np.array(X)
             if len(X.shape)==1:
                 X=X.reshape(-1,1)
             self._enc.fit(X)
@@ -43,14 +45,16 @@ class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
 
         Parameters
         ----------
-        X : array-like of shape (n_samples, n_features)
-            The data to encode.
+        X : array-like of shape (n_samples, 1)
+            The labels data to encode.
 
         Returns
         -------
-        X_out : ndarray of shape (n_samples, n_features)
+        X_out : ndarray of shape (n_samples, n_classes-1)
             Transformed input.
         """
+        if isinstance(X, list):
+            X=np.array(X)
         if self.nclasses == 0:
             if len(X.shape)==1:
                 X=X.reshape(-1,1)
