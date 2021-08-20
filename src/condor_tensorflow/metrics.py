@@ -45,7 +45,7 @@ class OrdinalMeanAbsoluteError(tf.keras.metrics.Metric):
   def result(self):
     return tf.math.divide_no_nan(self.maes, self.count)
 
-  def reset_states(self):
+  def reset_state(self):
     """Resets all of the metric state variables at the start of each epoch."""
     K.batch_set_value([(v, 0) for v in self.variables])
 
@@ -97,14 +97,12 @@ class SparseOrdinalMeanAbsoluteError(OrdinalMeanAbsoluteError):
 class OrdinalEarthMoversDistance(tf.keras.metrics.Metric):
   """Computes earth movers distance for ordinal labels."""
 
-  def __init__(self,num_classes,
-                    name="earth_movers_distance_labels",
+  def __init__(self,name="earth_movers_distance_labels",
                     **kwargs):
     """Creates a `OrdinalEarthMoversDistance` instance."""
     super().__init__(name=name, **kwargs)
     self.emds = self.add_weight(name='emds', initializer='zeros')
     self.count = self.add_weight(name='count', initializer='zeros')
-    self.num_classes = tf.constant(num_classes,dtype=tf.float32)
 
   def update_state(self, y_true, y_pred, sample_weight=None):
     """Computes mean absolute error for ordinal labels.
@@ -119,13 +117,14 @@ class OrdinalEarthMoversDistance(tf.keras.metrics.Metric):
       raise NotImplementedError
 
     cum_probs = ordinal_softmax(y_pred) #tf.math.cumprod(tf.math.sigmoid(y_pred), axis = 1)# tf.map_fn(tf.math.sigmoid, y_pred)
+    num_classes = tf.shape(cum_probs)[1]
 
     y_true = tf.cast(tf.reduce_sum(y_true,axis=1), y_pred.dtype)
 
     # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
     #y_true = tf.squeeze(y_true)
 
-    y_dist = tf.map_fn(fn=lambda y: tf.abs(y-tf.range(self.num_classes)),
+    y_dist = tf.map_fn(fn=lambda y: tf.abs(y-tf.range(num_classes)),
                        elems=y_true)
 
     self.emds.assign_add(tf.reduce_sum(tf.math.multiply(y_dist,cum_probs)))
@@ -134,7 +133,7 @@ class OrdinalEarthMoversDistance(tf.keras.metrics.Metric):
   def result(self):
     return tf.math.divide_no_nan(self.emds, self.count)
 
-  def reset_states(self):
+  def reset_state(self):
     """Resets all of the metric state variables at the start of each epoch."""
     K.batch_set_value([(v, 0) for v in self.variables])
 
@@ -148,10 +147,9 @@ class OrdinalEarthMoversDistance(tf.keras.metrics.Metric):
 class SparseOrdinalEarthMoversDistance(OrdinalEarthMoversDistance):
   """Computes earth movers distance for ordinal labels."""
 
-  def __init__(self,num_classes,
-                    **kwargs):
+  def __init__(self,**kwargs):
     """Creates a `SparseOrdinalEarthMoversDistance` instance."""
-    super().__init__(num_classes, **kwargs)
+    super().__init__(**kwargs)
 
   def update_state(self, y_true, y_pred, sample_weight=None):
     """Computes mean absolute error for ordinal labels.
@@ -166,13 +164,14 @@ class SparseOrdinalEarthMoversDistance(OrdinalEarthMoversDistance):
       raise NotImplementedError
 
     cum_probs = ordinal_softmax(y_pred) #tf.math.cumprod(tf.math.sigmoid(y_pred), axis = 1)# tf.map_fn(tf.math.sigmoid, y_pred)
+    num_classes = tf.shape(cum_probs)[1]
 
     y_true = tf.cast(y_true, y_pred.dtype)
 
     # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
     #y_true = tf.squeeze(y_true)
 
-    y_dist = tf.map_fn(fn=lambda y: tf.abs(y-tf.range(self.num_classes)),
+    y_dist = tf.map_fn(fn=lambda y: tf.abs(y-tf.range(num_classes)),
                        elems=y_true)
 
     self.emds.assign_add(tf.reduce_sum(tf.math.multiply(y_dist,cum_probs)))
