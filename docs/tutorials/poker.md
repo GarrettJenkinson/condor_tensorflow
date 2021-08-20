@@ -1,4 +1,4 @@
-# CONDOR MLP for predicting poker hands
+# CONDOR MLP for predicting poker hands NEEDS CONVERTING TO TENSORFLOW
 
 This tutorial explains how to equip a deep neural network with the CONDOR layer and loss function for ordinal regression in the context of predicting poker hands.
 
