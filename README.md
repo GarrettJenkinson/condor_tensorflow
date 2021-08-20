@@ -73,7 +73,8 @@ model.compile(loss = condor.CondorOrdinalCrossEntropy(num_classes = NUM_CLASSES)
 model.fit(x = X, y = enc_labs)
 ```
 
-[See this colab notebook](https://colab.research.google.com/drive/) for extended examples of ordinal regression with Amazon reviews (universal sentence encoder).
+[See this colab notebook](https://github.com/GarrettJenkinson/condor_tensorflow/blob/main/docs/CONDOR_TensorFlow_demo.ipynb) 
+for extended examples of ordinal regression with Amazon reviews (universal sentence encoder).
 
 Please post any issues to the [issue queue](https://github.com/GarrettJenkinson/condor_tensorflow/issues). 
 
