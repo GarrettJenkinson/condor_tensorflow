@@ -3,7 +3,7 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import OrdinalEncoder
 
 class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
-    def __init__(self, nclasses=0,dtype=np.float64,
+    def __init__(self, nclasses=0,dtype=np.int32,
                  **kwargs):
         self.nclasses=nclasses
         self.dtype=dtype
