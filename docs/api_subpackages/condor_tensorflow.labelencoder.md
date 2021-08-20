@@ -447,13 +447,13 @@ Transform X to ordinal arrays.
 
 **Parameters**
 
-- `X` : array-like of shape (n_samples, n_features)
+- `X` : array-like of shape (n_samples, 1)
 
-    The data to encode.
+    The labels data to encode.
 
 **Returns**
 
-- `X_out` : ndarray of shape (n_samples, n_features)
+- `X_out` : ndarray of shape (n_samples, n_classes-1)
 
     Transformed input.
 
