@@ -3,13 +3,11 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import OrdinalEncoder
 
 class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
-    def __init__(self, nclasses=0,categories='auto', dtype=np.int32,
-                 handle_unknown='error', unknown_value=None):
+    def __init__(self, nclasses=0,dtype=np.float64,
+                 **kwargs):
         self.nclasses=nclasses
-        self.categories = categories
-        self.dtype = dtype
-        self.handle_unknown = handle_unknown
-        self.unknown_value = unknown_value
+        self.dtype=dtype
+        self.kwargs = kwargs
 
     def fit(self, X, y=None):
         """Fit the CondorOrdinalEncoder to X.
@@ -29,10 +27,7 @@ class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
         if self.nclasses > 0:
             pass # expecting 0,1,...,nclasses-1
         else:
-            self._enc = OrdinalEncoder(categories=self.categories,
-                                      dtype=self.dtype,
-                                      handle_unknown=self.handle_unknown,
-                                      unknown_value=self.unknown_value)
+            self._enc = OrdinalEncoder(dtype=self.dtype,**self.kwargs)
             if isinstance(X, list):
                 X=np.array(X)
             if len(X.shape)==1:
