@@ -32,6 +32,8 @@ This package includes:
   * Ordinal tensorflow activation function: `ordinal_softmax`
   * Ordinal sklearn label encoder: `CondorOrdinalEncoder`
 
+<img src="./img/rankconsistent.png" width=500>
+
 ---
 
 ## Cite as
