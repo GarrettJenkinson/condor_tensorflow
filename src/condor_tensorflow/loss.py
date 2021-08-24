@@ -68,7 +68,6 @@ class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
     def call(self, y_true, y_pred):
 
         # Ensure that y_true is the same type as y_pred (presumably a float).
-        #y_pred = ops.convert_to_tensor_v2(y_pred)
         y_pred = tf.convert_to_tensor(y_pred)
         y_true = tf.cast(y_true, y_pred.dtype)
 
@@ -158,7 +157,6 @@ class SparseCondorOrdinalCrossEntropy(CondorOrdinalCrossEntropy):
     def call(self, y_true, y_pred):
 
         # Ensure that y_true is the same type as y_pred (presumably a float).
-        #y_pred = ops.convert_to_tensor_v2(y_pred)
         y_pred = tf.convert_to_tensor(y_pred)
         y_true = tf.cast(y_true, y_pred.dtype)
 
