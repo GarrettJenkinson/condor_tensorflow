@@ -80,7 +80,7 @@ model.fit(x = X, y = enc_labs)
 ```
 
 [See this colab notebook](https://github.com/GarrettJenkinson/condor_tensorflow/blob/main/docs/CONDOR_TensorFlow_demo.ipynb) 
-for extended examples of ordinal regression with Amazon reviews (universal sentence encoder).
+for extended examples of ordinal regression with MNIST and Amazon reviews (universal sentence encoder).
 
 Please post any issues to the [issue queue](https://github.com/GarrettJenkinson/condor_tensorflow/issues). 
 
