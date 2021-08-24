@@ -1,3 +1,5 @@
+![build](https://github.com/GarrettJenkinson/condor_tensorflow/actions/workflows/python-test.yml/badge.svg)
+
 <img src="docs/img/condor.png" width=300>
 
 # Condor Ordinal regression in Tensorflow Keras
