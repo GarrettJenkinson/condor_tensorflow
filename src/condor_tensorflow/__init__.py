@@ -12,12 +12,12 @@ from .labelencoder import CondorOrdinalEncoder
 # if somebody does "from somepackage import *", this is what they will
 # be able to access:
 __all__ = [
-  'OrdinalMeanAbsoluteError',
-  'SparseOrdinalMeanAbsoluteError',
-  'OrdinalEarthMoversDistance',
-  'SparseOrdinalEarthMoversDistance',
-  'CondorOrdinalCrossEntropy',
-  'SparseCondorOrdinalCrossEntropy',
-  'ordinal_softmax',
-  'CondorOrdinalEncoder',
+    'OrdinalMeanAbsoluteError',
+    'SparseOrdinalMeanAbsoluteError',
+    'OrdinalEarthMoversDistance',
+    'SparseOrdinalEarthMoversDistance',
+    'CondorOrdinalCrossEntropy',
+    'SparseCondorOrdinalCrossEntropy',
+    'ordinal_softmax',
+    'CondorOrdinalEncoder',
 ]
