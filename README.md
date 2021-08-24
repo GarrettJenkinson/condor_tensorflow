@@ -85,7 +85,7 @@ for extended examples of ordinal regression with Amazon reviews (universal sente
 Please post any issues to the [issue queue](https://github.com/GarrettJenkinson/condor_tensorflow/issues). 
 
 **Acknowledgments**: Many thanks to [the coral ordinal authors](https://github.com/ck37/coral-ordinal) and 
-[the coral pytorch authors](https://github.com/Raschka-research-group/coral_pytorch) whose repos was a roadmap for this codebase.
+[the coral pytorch authors](https://github.com/Raschka-research-group/coral_pytorch) whose repos were a roadmap for this codebase.
 
 ## References
 
