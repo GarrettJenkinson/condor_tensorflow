@@ -2,7 +2,7 @@
 
 # Condor Ordinal regression in Tensorflow Keras
 ![Continuous Integration](https://github.com/GarrettJenkinson/condor_tensorflow/actions/workflows/python-test.yml/badge.svg)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rasbt/coral_pytorch/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/GarrettJenkinson/condor_tensorflow/blob/main/LICENSE)
 ![Python 3](https://img.shields.io/badge/python-3-blue.svg)
 
 Tensorflow Keras implementation of Condor Ordinal Regression (aka ordinal classification) by 
