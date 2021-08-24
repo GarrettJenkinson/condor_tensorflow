@@ -4,8 +4,7 @@
 ## Import statements
 
 
-```
-
+```python
 import numpy as np
 import sklearn
 from sklearn import model_selection
@@ -35,7 +34,7 @@ Amazon review data via https://nijianmo.github.io/amazon/index.html#subsets
 ```
 
 
-```
+```python
 data = []
 with gzip.open('Prime_Pantry_5.json.gz') as f:
     for l in f:
@@ -66,7 +65,7 @@ num_classes = 5
 ```
 
 
-```
+```python
 # Train/Test split
 text_train, text_test, labels_train, labels_test = \
   train_test_split(df[text_col].values, df[outcome_col].values, test_size = 10000, random_state = 1)
@@ -80,8 +79,7 @@ print("Testing labels shape:", labels_test.shape)
 ### Universal Sentence Encoder model (minimal code changes)
 
 
-```
-%%time
+```python
 # This takes 20 - 30 seconds.
 
 # Clear our GPU memory to stay efficient.
@@ -107,7 +105,7 @@ model.summary()
 ```
 
 
-```
+```python
 model.compile(loss = condor.SparseCondorOrdinalCrossEntropy(),
               metrics = [condor.SparseOrdinalEarthMoversDistance(),
                          condor.SparseOrdinalMeanAbsoluteError()],
@@ -115,15 +113,13 @@ model.compile(loss = condor.SparseCondorOrdinalCrossEntropy(),
 ```
 
 
-```
+```python
 # Encode a test string and take a look at the first ten dimensions.
 base_model(np.array(["test_string"])).numpy()[0, :10]
 ```
 
 
-```
-%%time
-
+```python
 history = model.fit(x = text_train,
                     y = labels_train,
                     epochs = 5,
@@ -137,13 +133,13 @@ history = model.fit(x = text_train,
 #### Evaluate
 
 
-```
+```python
 # For comparison, CORAL achieves loss 0.7962, MAE 0.3195
 model.evaluate(text_test, labels_test) 
 ```
 
 
-```
+```python
 # Generate predictions - initially these are cumulative logits.
 preds = model.predict(text_test)
 print(preds)
@@ -152,7 +148,7 @@ probs = pd.DataFrame(condor.ordinal_softmax(preds).numpy())
 ```
 
 
-```
+```python
 print(probs.head(10))
 print(labels_test[:10])
 ```
@@ -160,7 +156,7 @@ print(labels_test[:10])
 #### Evaluate accuracy
 
 
-```
+```python
 # Evaluate accuracy and mean absolute error
 labels_v1 = probs.idxmax(axis = 1)
 print("Accuracy of label version 1:", np.mean(labels_v1 == labels_test))
@@ -177,7 +173,7 @@ print("Accuracy of label version 2:", np.mean(labels_v2 == labels_test))
 This is effectively an ordinal version of 1 - accuracy.
 
 
-```
+```python
 # These do not correspond with what we get from the model evaluation. Something must be off in one of these.
 print("Mean absolute label error version 1:", np.mean(np.abs(labels_v1 - labels_test)))
 print("Mean absolute label error version 2:", np.mean(np.abs(labels_v2 - labels_test)))
@@ -187,7 +183,7 @@ print("Root mean squared label error version 2:", np.sqrt(np.mean(np.square(labe
 ```
 
 
-```
+```python
 # Review how absolute error is calculated for ordinal labels:
 pd.DataFrame({"true": labels_test, "pred_v2": labels_v1, "abs": labels_v2 - labels_test}).head()
 ```
@@ -199,8 +195,7 @@ The "Sparse" versions of the CONDOR API are convenient and require minimal code 
 Also as we will see later, the labels do not always come encoded as 0,1,...,K-1. In this case, using the CondorOrdinalEncoder will help transform labels into ordinal-ready values.
 
 
-```
-%%time
+```python
 # pre-encoding runs very fast so the savings later are worth it
 enc = condor.CondorOrdinalEncoder(nclasses=num_classes)
 enc_labs_train = enc.fit_transform(labels_train)
@@ -208,7 +203,7 @@ enc_labs_test = enc.transform(labels_test)
 ```
 
 
-```
+```python
 # Note the lack of "Sparse" in the condor functions here
 model.compile(loss = condor.CondorOrdinalCrossEntropy(),
               metrics = [condor.OrdinalEarthMoversDistance(),
@@ -217,8 +212,7 @@ model.compile(loss = condor.CondorOrdinalCrossEntropy(),
 ```
 
 
-```
-%%time
+```python
 # note the encoded labels are passed to the fit now
 history = model.fit(x = text_train,
                     y = enc_labs_train,
@@ -231,7 +225,7 @@ history = model.fit(x = text_train,
 ```
 
 
-```
+```python
 model.evaluate(text_test, enc_labs_test) 
 ```
 
@@ -240,7 +234,7 @@ Here we demo the features of the ordinal encoder.
 
 
 
-```
+```python
 # Here the ordinal encoder figures out how many classes there are automatically
 # and orders them in the default sklearn OrdinalEncoder fashion 
 # (i.e., alphabetically here)
@@ -250,7 +244,7 @@ print(enc_labs)
 ```
 
 
-```
+```python
 # Here the ordinal encoder figures out how many classes there are automatically
 # and orders them in the default sklearn OrdinalEncoder fashion 
 # (i.e., alphabetically here). This time it is dealing with a basic list.
@@ -261,7 +255,7 @@ print(enc_labs)
 ```
 
 
-```
+```python
 # Here we wish to specify the order to be different from alphabetical. Note
 # this would also allow "missing" categories to be included in proper order.
 labels = ['low','med','high']

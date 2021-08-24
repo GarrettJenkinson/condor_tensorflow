@@ -4,8 +4,7 @@
 ## Import statements
 
 
-```
-
+```python
 import numpy as np
 import sklearn
 from sklearn import model_selection
@@ -30,11 +29,7 @@ print("CORAL Ordinal version:", condor.__version__)
 This outcome is not actually ordinal, it's categorical. We're just using it as a toy example to show how the different components are used.
 
 
-```
-##########################
-### SETTINGS
-##########################
-
+```python
 # Hyperparameters
 random_seed = 1 # Not yet used
 learning_rate = 0.05
@@ -46,7 +41,7 @@ NUM_CLASSES = 10
 ```
 
 
-```
+```python
 # Fetch and format the mnist data
 (mnist_images, mnist_labels), (mnist_images_test, mnist_labels_test) = tf.keras.datasets.mnist.load_data()
 
@@ -90,7 +85,7 @@ val_dataset = val_dataset.shuffle(1000).batch(batch_size)
 Now we create a simple multi-layer perceptron model so that we can apply the ordinal output layer.
 
 
-```
+```python
 def create_model(num_classes):
   model = tf.keras.Sequential()
   model.add(tf.keras.layers.Flatten(input_shape = (28, 28, )))
@@ -109,7 +104,7 @@ model.summary()
 ```
 
 
-```
+```python
 # Or a functional API version
 def create_model2(num_classes):
   inputs = tf.keras.Input(shape = (28, 28, ))
@@ -133,7 +128,7 @@ model.summary()
 ```
 
 
-```
+```python
 model.compile(optimizer = tf.keras.optimizers.Adam(learning_rate = learning_rate),
               loss = condor.SparseCondorOrdinalCrossEntropy(),
               metrics = [condor.SparseOrdinalEarthMoversDistance(),
@@ -141,10 +136,7 @@ model.compile(optimizer = tf.keras.optimizers.Adam(learning_rate = learning_rate
 ```
 
 
-```
-%%time
-
-# This takes about 5 minutes on CPU, 2.5 minutes on GPU.
+```python
 history = model.fit(dataset, epochs = 5, validation_data = val_dataset,
                     callbacks = [tf.keras.callbacks.EarlyStopping(patience = 3, restore_best_weights = True)])
 ```
@@ -152,7 +144,7 @@ history = model.fit(dataset, epochs = 5, validation_data = val_dataset,
 ### Test set evaluation
 
 
-```
+```python
 # Evaluate on test dataset.
 model.evaluate(test_dataset)
 ```
@@ -164,7 +156,7 @@ We can convert the cumulative logit output of the layer into the probability est
 Notice that the probability distribution for each observation is unimodal, which is what we want for an ordinal outcome variable.
 
 
-```
+```python
 print("Predict on test dataset")
 
 # Note that these are ordinal (cumulative) logits, not probabilities or regular logits.
@@ -180,7 +172,7 @@ probs_df.head()
 ```
 
 
-```
+```python
 # Check that probabilities all sum to 1 - looks good!
 probs_df.sum(axis = 1)
 ```
@@ -190,20 +182,20 @@ probs_df.sum(axis = 1)
 This notebook shows two ways of calculating predicted labels. We can take the highest probability label (first method) or we can choose the highest label with Pr(Y > label) > 50%.
 
 
-```
+```python
 # Probs to labels
 labels = probs_df.idxmax(axis = 1)
 labels.values
 ```
 
 
-```
+```python
 # What is our accuracy? Around 69%.
 np.mean(labels == mnist_labels_test)
 ```
 
 
-```
+```python
 # Compare to logit-based cumulative probs
 cum_probs = pd.DataFrame(ordinal_logits).apply(special.expit).cumprod(axis=1)
 cum_probs.head()
@@ -212,32 +204,32 @@ cum_probs.head()
 Now we should try another option, which is used in the Cao et al. paper.
 
 
-```
+```python
 # Calculate the labels using the style of Cao et al.
 labels2 = cum_probs.apply(lambda x: x > 0.5).sum(axis = 1)
 labels2.head()
 ```
 
 
-```
+```python
 # What is the accuracy of these labels? 
 np.mean(labels2 == mnist_labels_test)
 ```
 
 
-```
+```python
 # More often than not these are the same, but still a lot of discrepancy.
 np.mean(labels == labels2)
 ```
 
 
-```
+```python
 print("Mean absolute label error version 1:", np.mean(np.abs(labels - mnist_labels_test)))
 print("Mean absolute label error version 2:", np.mean(np.abs(labels2 - mnist_labels_test)))
 ```
 
 
-```
+```python
 mnist_labels_test[:5]
 ```
 
@@ -246,7 +238,7 @@ mnist_labels_test[:5]
 A quick example to show how the importance weights can be customized. 
 
 
-```
+```python
 model = create_model(num_classes = NUM_CLASSES)
 model.summary()
 
@@ -259,9 +251,7 @@ model.compile(tf.keras.optimizers.Adam(lr = learning_rate), loss = loss_fn)
 ```
 
 
-```
-%%time
-
+```python
 history = model.fit(dataset, epochs = num_epochs)
 ```
 
