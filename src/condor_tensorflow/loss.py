@@ -7,7 +7,6 @@ import tensorflow as tf
 class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
 
     def __init__(self,
-                 num_classes,
                  importance_weights=None,
                  from_type="ordinal_logits",
                  name="ordinal_crossent",
@@ -16,9 +15,6 @@ class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
 
         Parameters
         ----------
-        num_classes: int
-            number of ranks (aka labels or values) in the ordinal variable
-
         importance_weights: tf or np array of floats, shape(numclasses-1,)
             (Optional) importance weights for each binary classification task.
 
@@ -32,7 +28,6 @@ class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
             Loss vector, note that tensorflow will reduce it to a single number
             automatically.
         """
-        self.num_classes = num_classes
         self.importance_weights = importance_weights
         self.from_type = from_type
 
@@ -71,12 +66,15 @@ class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
         y_pred = tf.convert_to_tensor(y_pred)
         y_true = tf.cast(y_true, y_pred.dtype)
 
+        # get number of classes
+        num_classes = tf.shape(y_pred)[1]+1
+
         # we are not sparse here, so labels are encoded already
         tf_levels = y_true
 
         if self.importance_weights is None:
-            importance_weights = tf.ones(
-                self.num_classes - 1, dtype=tf.float32)
+            importance_weights = tf.ones(num_classes-1,
+                                         dtype=tf.float32)
         else:
             importance_weights = tf.cast(
                 self.importance_weights, dtype=tf.float32)
@@ -94,7 +92,6 @@ class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
     def get_config(self):
         base_config = super().get_config()
         config = {
-            "num_classes": self.num_classes,
             "importance_weights": self.importance_weights,
             "from_type": self.from_type,
         }
@@ -106,7 +103,6 @@ class CondorOrdinalCrossEntropy(tf.keras.losses.Loss):
 class SparseCondorOrdinalCrossEntropy(CondorOrdinalCrossEntropy):
 
     def __init__(self,
-                 num_classes,
                  importance_weights=None,
                  from_type="ordinal_logits",
                  name="ordinal_crossent",
@@ -115,9 +111,6 @@ class SparseCondorOrdinalCrossEntropy(CondorOrdinalCrossEntropy):
 
         Parameters
         ----------
-        num_classes: int
-            number of ranks (aka labels or values) in the ordinal variable
-
         importance_weights: tf or np array of floats, shape(numclasses-1,)
             (Optional) importance weights for each binary classification task.
 
@@ -132,7 +125,6 @@ class SparseCondorOrdinalCrossEntropy(CondorOrdinalCrossEntropy):
             automatically.
         """
         super().__init__(name=name,
-                         num_classes=num_classes,
                          importance_weights=importance_weights,
                          from_type=from_type,
                          **kwargs)
@@ -159,6 +151,9 @@ class SparseCondorOrdinalCrossEntropy(CondorOrdinalCrossEntropy):
         # Ensure that y_true is the same type as y_pred (presumably a float).
         y_pred = tf.convert_to_tensor(y_pred)
         y_true = tf.cast(y_true, y_pred.dtype)
+
+        # get number of classes
+        self.num_classes = tf.shape(y_pred)[1]+1
 
         # Convert each true label to a vector of ordinal level indicators.
         tf_levels = tf.map_fn(self.label_to_levels, y_true)

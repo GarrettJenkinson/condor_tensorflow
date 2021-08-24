@@ -63,8 +63,7 @@ above with `gpu`.
 
 ## Example
 
-This is a quick example to show a basic model implementation. With actual 
-data one would also want to specify the input shape.
+This is a quick example to show a basic model implementation. 
 
 ```python
 import condor_tensorflow as condor
@@ -74,7 +73,7 @@ enc_labs = condor.CondorOrdinalEncoder(nclasses=NUM_CLASSES).fit_transform(label
 model = tf.keras.Sequential()
 model.add(tf.keras.layers.Dense(32, activation = "relu"))
 model.add(tf.keras.layers.Dense(NUM_CLASSES-1)) # Note the "-1"
-model.compile(loss = condor.CondorOrdinalCrossEntropy(num_classes = NUM_CLASSES),
+model.compile(loss = condor.CondorOrdinalCrossEntropy(),
               metrics = [condor.OrdinalMeanAbsoluteError()])
 model.fit(x = X, y = enc_labs)
 ```

@@ -135,7 +135,7 @@ model.summary()
 
 ```
 model.compile(optimizer = tf.keras.optimizers.Adam(learning_rate = learning_rate),
-              loss = condor.SparseCondorOrdinalCrossEntropy(num_classes=NUM_CLASSES),
+              loss = condor.SparseCondorOrdinalCrossEntropy(),
               metrics = [condor.SparseOrdinalEarthMoversDistance(),
                          condor.SparseOrdinalMeanAbsoluteError()])
 ```
@@ -253,7 +253,7 @@ model.summary()
 # We have num_classes - 1 outputs (cumulative logits), so there are 9 elements
 # in the importance vector to customize.
 importance_weights = [1., 1., 0.5, 0.5, 0.5, 1., 1., 0.1, 0.1]
-loss_fn = condor.SparseCondorOrdinalCrossEntropy(NUM_CLASSES, importance_weights = importance_weights)
+loss_fn = condor.SparseCondorOrdinalCrossEntropy(importance_weights = importance_weights)
 
 model.compile(tf.keras.optimizers.Adam(lr = learning_rate), loss = loss_fn)
 ```

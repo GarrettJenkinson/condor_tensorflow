@@ -108,7 +108,7 @@ model.summary()
 
 
 ```
-model.compile(loss = condor.SparseCondorOrdinalCrossEntropy(num_classes=num_classes),
+model.compile(loss = condor.SparseCondorOrdinalCrossEntropy(),
               metrics = [condor.SparseOrdinalEarthMoversDistance(),
                          condor.SparseOrdinalMeanAbsoluteError()],
               optimizer = tf.keras.optimizers.Adam(learning_rate = 0.001))
@@ -210,7 +210,7 @@ enc_labs_test = enc.transform(labels_test)
 
 ```
 # Note the lack of "Sparse" in the condor functions here
-model.compile(loss = condor.CondorOrdinalCrossEntropy(num_classes=num_classes),
+model.compile(loss = condor.CondorOrdinalCrossEntropy(),
               metrics = [condor.OrdinalEarthMoversDistance(),
                          condor.OrdinalMeanAbsoluteError()],
               optimizer = tf.keras.optimizers.Adam(learning_rate = 0.001))
