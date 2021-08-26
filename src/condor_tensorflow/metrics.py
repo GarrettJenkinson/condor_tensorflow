@@ -164,9 +164,8 @@ class OrdinalEarthMoversDistance(tf.keras.metrics.Metric):
 
     def get_config(self):
         """Returns the serializable config of the metric."""
-        config = {"num_classes": self.num_classes}
         base_config = super().get_config()
-        return {**base_config, **config}
+        return {**base_config}
 
 
 class SparseOrdinalEarthMoversDistance(OrdinalEarthMoversDistance):
