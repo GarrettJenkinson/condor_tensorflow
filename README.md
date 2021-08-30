@@ -5,13 +5,13 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/GarrettJenkinson/condor_tensorflow/blob/main/LICENSE)
 ![Python 3](https://img.shields.io/badge/python-3-blue.svg)
 
-Tensorflow Keras implementation of Condor Ordinal Regression (aka ordinal classification) by 
+Tensorflow Keras implementation of CONDOR Ordinal Regression (aka ordinal classification) by 
 Garrett Jenkinson et al (2021).
 
-It is compatible with any state-of-the-art deep neural network architecture, 
-requiring only modification of the output layer, the labels, the loss function.
+CONDOR is compatible with any state-of-the-art deep neural network architecture, 
+requiring only modification of the output layer, the labels, and the loss function.
 
-We also have condor [implemented for pytorch](https://github.com/GarrettJenkinson/condor_pytorch).
+We also have implemented [CONDOR for pytorch](https://github.com/GarrettJenkinson/condor_pytorch).
 
 This package includes:
 
@@ -45,7 +45,7 @@ pip install git+https://github.com/GarrettJenkinson/condor_tensorflow/
 This package relies on Python 3.6+, Tensorflow 2.2+, sklearn, and numpy.
 For convenience we provide a Dockerfile that will build a container with
 `condor_tensorflow` as well as its dependencies. This can be used
-as 
+as follows:
 
 ```bash
 # Create a docker image
@@ -54,16 +54,16 @@ docker build -t cpu_tensorflow -f cpu.Dockerfile ./
 # run image to serve a jupyter notebook 
 docker run -it -p 8888:8888 --rm cpu_tensorflow
 
-# how to run bash inside container (with python that will have deps)
+# how to run bash inside container (with python that will have dependencies)
 docker run -u $(id -u):$(id -g) -it -p 8888:8888 --rm cpu_tensorflow bash
 ```
 
-Assuming a GPU enabled machine with the NVIDIA drivers installed replace `cpu`
+Assuming a GPU enabled machine with NVIDIA drivers installed replace `cpu`
 above with `gpu`.
 
 ## Example
 
-This is a quick example to show a basic model implementation. 
+This is a quick example to show a basic model implementation:
 
 ```python
 import condor_tensorflow as condor
@@ -83,8 +83,8 @@ for extended examples of ordinal regression with MNIST and Amazon reviews (unive
 
 Please post any issues to the [issue queue](https://github.com/GarrettJenkinson/condor_tensorflow/issues). 
 
-**Acknowledgments**: Many thanks to [the coral ordinal authors](https://github.com/ck37/coral-ordinal) and 
-[the coral pytorch authors](https://github.com/Raschka-research-group/coral_pytorch) whose repos were a roadmap for this codebase.
+**Acknowledgments**: Many thanks to [the CORAL ordinal authors](https://github.com/ck37/coral-ordinal) and 
+[the CORAL pytorch authors](https://github.com/Raschka-research-group/coral_pytorch) whose repos provided a roadmap for this codebase.
 
 ## References
 
