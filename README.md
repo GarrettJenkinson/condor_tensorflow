@@ -63,7 +63,7 @@ above with `gpu`.
 
 ## Example
 
-This is a quick example to show basic model implementation syntax.
+This is a quick example to show basic model implementation syntax.<br>
 Example assumes existence of input data X and ordinal labels y.
 
 ```python
