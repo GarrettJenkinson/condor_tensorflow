@@ -63,9 +63,11 @@ above with `gpu`.
 
 ## Example
 
-This is a quick example to show a basic model implementation:
+This is a quick example to show basic model implementation syntax.
+Example assumes existence of input data X and ordinal labels y.
 
 ```python
+import tensorflow as tf
 import condor_tensorflow as condor
 NUM_CLASSES = 5
 # Ordinal 'labels' variable has 5 labels, 0 through 4.
