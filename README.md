@@ -54,7 +54,7 @@ docker build -t cpu_tensorflow -f cpu.Dockerfile ./
 # run image to serve a jupyter notebook 
 docker run -it -p 8888:8888 --rm cpu_tensorflow
 
-# how to run bash inside container (with python that will have dependencies)
+# how to run bash inside container (with Python that will have required dependencies available)
 docker run -u $(id -u):$(id -g) -it -p 8888:8888 --rm cpu_tensorflow bash
 ```
 
