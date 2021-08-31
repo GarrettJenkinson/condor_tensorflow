@@ -44,7 +44,7 @@ condor_tensorflow should now be available for use as a Python library.
 
 ## Docker container
 
-As an alternaitve to the above, we provide a convenient Dockerfile that will build a container with `condor_tensorflow` along with all of its dependencies (Python 3.6+, Tensorflow 2.2+, sklearn, numpy).
+As an alternative to the above, we provide a convenient Dockerfile that will build a container with `condor_tensorflow` along with all of its dependencies (Python 3.6+, Tensorflow 2.2+, sklearn, numpy).
 This can be used as follows:
 
 ```bash
