@@ -40,12 +40,12 @@ Install the most recent code on GitHub via pip:
 pip install git+https://github.com/GarrettJenkinson/condor_tensorflow/
 ```
 
-## Dependencies
+condor_tensorflow should now be available for use as a Python library.
 
-This package relies on Python 3.6+, Tensorflow 2.2+, sklearn, and numpy.
-For convenience we provide a Dockerfile that will build a container with
-`condor_tensorflow` as well as its dependencies. This can be used
-as follows:
+## Docker container
+
+For convenience we provide a Dockerfile that will build a container with `condor_tensorflow` along with all of its dependencies (Python 3.6+, Tensorflow 2.2+, sklearn, numpy).
+This can be used as follows:
 
 ```bash
 # Create a docker image
