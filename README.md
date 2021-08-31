@@ -34,7 +34,7 @@ Install the stable version via pip:
 pip install condor_tensorflow
 ```
 
-Install the most recent code on GitHub via pip:
+Alternatively install the most recent code on GitHub via pip:
 
 ```bash
 pip install git+https://github.com/GarrettJenkinson/condor_tensorflow/
@@ -48,6 +48,12 @@ For convenience we provide a Dockerfile that will build a container with `condor
 This can be used as follows:
 
 ```bash
+# Clone this git repository
+git clone https://github.com/GarrettJenkinson/condor_tensorflow/
+
+# Change directory to the cloned repository root
+cd condor_tensorflow
+
 # Create a docker image
 docker build -t cpu_tensorflow -f cpu.Dockerfile ./
 
