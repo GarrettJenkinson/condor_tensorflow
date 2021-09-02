@@ -43,7 +43,7 @@ class OrdinalMeanAbsoluteError(tf.keras.metrics.Metric):
         y_true = tf.cast(tf.reduce_sum(y_true, axis=1), y_pred.dtype)
 
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
-        #y_true = tf.squeeze(y_true)
+        y_true = tf.squeeze(y_true)
 
         self.maes.assign_add(tf.reduce_sum(tf.abs(y_true - labels_v2)))
         self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
@@ -53,7 +53,8 @@ class OrdinalMeanAbsoluteError(tf.keras.metrics.Metric):
 
     def reset_state(self):
         """Resets all of the metric state variables at the start of each epoch."""
-        K.batch_set_value([(v, 0) for v in self.variables])
+        self.maes.assign(0.0)
+        self.count.assign(0.0)
 
     def get_config(self):
         """Returns the serializable config of the metric."""
@@ -101,7 +102,7 @@ class SparseOrdinalMeanAbsoluteError(OrdinalMeanAbsoluteError):
         y_true = tf.cast(y_true, y_pred.dtype)
 
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
-        #y_true = tf.squeeze(y_true)
+        y_true = tf.squeeze(y_true)
 
         self.maes.assign_add(tf.reduce_sum(tf.abs(y_true - labels_v2)))
         self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
@@ -150,7 +151,7 @@ class OrdinalAccuracy(tf.keras.metrics.Metric):
         y_true = tf.cast(tf.reduce_sum(y_true, axis=1), y_pred.dtype)
 
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
-        #y_true = tf.squeeze(y_true)
+        y_true = tf.squeeze(y_true)
 
         self.accs.assign_add(tf.reduce_sum(tf.cast(tf.less_equal(
             tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
@@ -162,7 +163,8 @@ class OrdinalAccuracy(tf.keras.metrics.Metric):
 
     def reset_state(self):
         """Resets all of the metric state variables at the start of each epoch."""
-        K.batch_set_value([(v, 0) for v in self.variables])
+        self.accs.assign(0.0)
+        self.count.assign(0.0)
 
     def get_config(self):
         """Returns the serializable config of the metric."""
@@ -206,7 +208,7 @@ class SparseOrdinalAccuracy(OrdinalAccuracy):
         y_true = tf.cast(y_true, y_pred.dtype)
 
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
-        #y_true = tf.squeeze(y_true)
+        y_true = tf.squeeze(y_true)
 
         self.accs.assign_add(tf.reduce_sum(tf.cast(tf.less_equal(
             tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
