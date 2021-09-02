@@ -43,7 +43,7 @@ class OrdinalMeanAbsoluteError(tf.keras.metrics.Metric):
         y_true = tf.cast(tf.reduce_sum(y_true, axis=1), y_pred.dtype)
 
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
-        y_true = tf.squeeze(y_true)
+        #y_true = tf.squeeze(y_true)
 
         self.maes.assign_add(tf.reduce_sum(tf.abs(y_true - labels_v2)))
         self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
@@ -101,7 +101,7 @@ class SparseOrdinalMeanAbsoluteError(OrdinalMeanAbsoluteError):
         y_true = tf.cast(y_true, y_pred.dtype)
 
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
-        y_true = tf.squeeze(y_true)
+        #y_true = tf.squeeze(y_true)
 
         self.maes.assign_add(tf.reduce_sum(tf.abs(y_true - labels_v2)))
         self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
@@ -110,11 +110,11 @@ class OrdinalAccuracy(tf.keras.metrics.Metric):
     """Computes accuracy for ordinal labels (tolerance is allowed rank
     distance to be considered 'correct' predictions)."""
 
-    def __init__(self, name="ordinal_accuracy",
+    def __init__(self, name="ordinal_accuracy_tol",
                  tolerance=0,
                  **kwargs):
         """Creates a `OrdinalAccuracy` instance."""
-        super().__init__(name=name, **kwargs)
+        super().__init__(name=name+str(tolerance), **kwargs)
         self.accs = self.add_weight(name='accs', initializer='zeros')
         self.count = self.add_weight(name='count', initializer='zeros')
         self.tolerance = tolerance
@@ -150,10 +150,10 @@ class OrdinalAccuracy(tf.keras.metrics.Metric):
         y_true = tf.cast(tf.reduce_sum(y_true, axis=1), y_pred.dtype)
 
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
-        y_true = tf.squeeze(y_true)
+        #y_true = tf.squeeze(y_true)
 
         self.accs.assign_add(tf.reduce_sum(tf.cast(tf.less_equal(
-            tf.abs(y_true-y_pred),tf.cast(self.tolerance,y_pred.dtype)),
+            tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
             y_pred.dtype)))
         self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
 
@@ -174,13 +174,6 @@ class OrdinalAccuracy(tf.keras.metrics.Metric):
 class SparseOrdinalAccuracy(OrdinalAccuracy):
     """Computes accuracy for ordinal labels (tolerance is allowed rank
     distance to be considered 'correct' predictions)."""
-
-    def __init__(self, name="ordinal_accuracy",
-                 tolerance=0,
-                 **kwargs):
-        """Creates a `SparseOrdinalAccuracy` instance."""
-        super().__init__(name=name,tolerance=tolerance,
-                         **kwargs)
 
     def update_state(self, y_true, y_pred, sample_weight=None):
         """Computes accuracy for ordinal labels.
@@ -213,10 +206,10 @@ class SparseOrdinalAccuracy(OrdinalAccuracy):
         y_true = tf.cast(y_true, y_pred.dtype)
 
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
-        y_true = tf.squeeze(y_true)
+        #y_true = tf.squeeze(y_true)
 
         self.accs.assign_add(tf.reduce_sum(tf.cast(tf.less_equal(
-            tf.abs(y_true-y_pred),tf.cast(self.tolerance,y_pred.dtype)),
+            tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
             y_pred.dtype)))
         self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
 
