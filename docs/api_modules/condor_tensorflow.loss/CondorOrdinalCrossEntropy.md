@@ -1,6 +1,6 @@
 ## CondorOrdinalCrossEntropy
 
-*CondorOrdinalCrossEntropy(num_classes, importance_weights=None, from_type='ordinal_logits', name='ordinal_crossent', **kwargs)*
+*CondorOrdinalCrossEntropy(importance_weights=None, from_type='ordinal_logits', name='ordinal_crossent', **kwargs)*
 
 Loss base class.
 

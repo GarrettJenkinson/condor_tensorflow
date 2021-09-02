@@ -333,7 +333,7 @@ Set the parameters of this estimator.
 
 ## CondorOrdinalEncoder
 
-*CondorOrdinalEncoder(nclasses=0, categories='auto', dtype=<class 'numpy.int32'>, handle_unknown='error', unknown_value=None)*
+*CondorOrdinalEncoder(nclasses=0, dtype=<class 'numpy.int32'>, **kwargs)*
 
 Base class for all estimators in scikit-learn.
 

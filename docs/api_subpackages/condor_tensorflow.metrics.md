@@ -488,9 +488,18 @@ Returns the current weights of the layer.
 
 <hr>
 
-*reset_states()*
+*reset_state()*
 
 Resets all of the metric state variables at the start of each epoch.
+
+<hr>
+
+*reset_states()*
+
+Resets all of the metric state variables.
+
+    This function is called between epochs/steps,
+    when a metric is evaluated during training.
 
 <hr>
 
@@ -1496,9 +1505,18 @@ Returns the current weights of the layer.
 
 <hr>
 
-*reset_states()*
+*reset_state()*
 
 Resets all of the metric state variables at the start of each epoch.
+
+<hr>
+
+*reset_states()*
+
+Resets all of the metric state variables.
+
+    This function is called between epochs/steps,
+    when a metric is evaluated during training.
 
 <hr>
 
@@ -2504,9 +2522,18 @@ Returns the current weights of the layer.
 
 <hr>
 
-*reset_states()*
+*reset_state()*
 
 Resets all of the metric state variables at the start of each epoch.
+
+<hr>
+
+*reset_states()*
+
+Resets all of the metric state variables.
+
+    This function is called between epochs/steps,
+    when a metric is evaluated during training.
 
 <hr>
 
@@ -3512,9 +3539,18 @@ Returns the current weights of the layer.
 
 <hr>
 
-*reset_states()*
+*reset_state()*
 
 Resets all of the metric state variables at the start of each epoch.
+
+<hr>
+
+*reset_states()*
+
+Resets all of the metric state variables.
+
+    This function is called between epochs/steps,
+    when a metric is evaluated during training.
 
 <hr>
 
