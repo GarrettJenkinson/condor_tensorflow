@@ -488,9 +488,18 @@ Returns the current weights of the layer.
 
 <hr>
 
-*reset_states()*
+*reset_state()*
 
 Resets all of the metric state variables at the start of each epoch.
+
+<hr>
+
+*reset_states()*
+
+Resets all of the metric state variables.
+
+    This function is called between epochs/steps,
+    when a metric is evaluated during training.
 
 <hr>
 
@@ -1496,9 +1505,18 @@ Returns the current weights of the layer.
 
 <hr>
 
-*reset_states()*
+*reset_state()*
 
 Resets all of the metric state variables at the start of each epoch.
+
+<hr>
+
+*reset_states()*
+
+Resets all of the metric state variables.
+
+    This function is called between epochs/steps,
+    when a metric is evaluated during training.
 
 <hr>
 
@@ -2015,11 +2033,12 @@ Returns the list of all layer variables/weights.
     Returns:
     A list of variables.
 
-## SparseOrdinalEarthMoversDistance
+## OrdinalAccuracy
 
-*SparseOrdinalEarthMoversDistance(*args, **kwargs)*
+*OrdinalAccuracy(*args, **kwargs)*
 
-Computes earth movers distance for ordinal labels.
+Computes accuracy for ordinal labels (tolerance is allowed rank
+    distance to be considered 'correct' predictions).
 
 ### Methods
 
@@ -2504,9 +2523,18 @@ Returns the current weights of the layer.
 
 <hr>
 
-*reset_states()*
+*reset_state()*
 
 Resets all of the metric state variables at the start of each epoch.
+
+<hr>
+
+*reset_states()*
+
+Resets all of the metric state variables.
+
+    This function is called between epochs/steps,
+    when a metric is evaluated during training.
 
 <hr>
 
@@ -2570,11 +2598,11 @@ Sets the weights of the layer, from Numpy arrays.
 
 *update_state(y_true, y_pred, sample_weight=None)*
 
-Computes mean absolute error for ordinal labels.
+Computes accuracy for ordinal labels.
 
     Args:
     y_true: Cumulatiuve logits from CondorOrdinal layer.
-    y_pred: Sparse Labels with values in {0,1,...,num_classes-1}
+    y_pred: CondorOrdinal Encoded Labels.
     sample_weight (optional): Not implemented.
 
 <hr>
@@ -3023,11 +3051,12 @@ Returns the list of all layer variables/weights.
     Returns:
     A list of variables.
 
-## OrdinalEarthMoversDistance
+## SparseOrdinalAccuracy
 
-*OrdinalEarthMoversDistance(*args, **kwargs)*
+*SparseOrdinalAccuracy(*args, **kwargs)*
 
-Computes earth movers distance for ordinal labels.
+Computes accuracy for ordinal labels (tolerance is allowed rank
+    distance to be considered 'correct' predictions).
 
 ### Methods
 
@@ -3512,9 +3541,18 @@ Returns the current weights of the layer.
 
 <hr>
 
-*reset_states()*
+*reset_state()*
 
 Resets all of the metric state variables at the start of each epoch.
+
+<hr>
+
+*reset_states()*
+
+Resets all of the metric state variables.
+
+    This function is called between epochs/steps,
+    when a metric is evaluated during training.
 
 <hr>
 
@@ -3578,7 +3616,7 @@ Sets the weights of the layer, from Numpy arrays.
 
 *update_state(y_true, y_pred, sample_weight=None)*
 
-Computes mean absolute error for ordinal labels.
+Computes accuracy for ordinal labels.
 
     Args:
     y_true: Cumulatiuve logits from CondorOrdinal layer.

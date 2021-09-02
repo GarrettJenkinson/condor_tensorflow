@@ -1,4 +1,5 @@
 import tensorflow as tf
+from .activations import ordinal_softmax
 
 # The outer function is a constructor to create a loss function using a
 # certain number of classes.
@@ -174,3 +175,79 @@ class SparseCondorOrdinalCrossEntropy(CondorOrdinalCrossEntropy):
         else:
             raise Exception("Unknown from_type value " + self.from_type +
                             " in CondorOrdinalCrossEntropy()")
+
+
+
+class OrdinalEarthMoversDistance(tf.keras.losses.Loss):
+    """Computes earth movers distance for ordinal labels."""
+
+    def __init__(self, name="earth_movers_distance",
+                 **kwargs):
+        """Creates a `OrdinalEarthMoversDistance` instance."""
+        super().__init__(name=name, **kwargs)
+
+    def call(self, y_true, y_pred):
+        """Computes mean absolute error for ordinal labels.
+
+        Args:
+          y_true: Cumulatiuve logits from CondorOrdinal layer.
+          y_pred: CondorOrdinal Encoded Labels.
+        """
+
+        # Ensure that y_true is the same type as y_pred (presumably a float).
+        y_pred = tf.convert_to_tensor(y_pred)
+
+        # basic setup
+        cum_probs = ordinal_softmax(y_pred)
+        num_classes = tf.shape(cum_probs)[1]
+
+        y_true = tf.cast(tf.reduce_sum(y_true, axis=1), y_pred.dtype)
+
+        # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
+        #y_true = tf.squeeze(y_true)
+
+        y_dist = tf.map_fn(
+            fn=lambda y: tf.abs(
+                y - tf.range(num_classes,dtype=y_pred.dtype)),
+            elems=y_true)
+
+        vals = tf.reduce_sum(tf.math.multiply(y_dist,cum_probs),axis=1)
+        return vals
+
+    def get_config(self):
+        """Returns the serializable config of the metric."""
+        base_config = super().get_config()
+        return {**base_config}
+
+
+class SparseOrdinalEarthMoversDistance(OrdinalEarthMoversDistance):
+    """Computes earth movers distance for ordinal labels."""
+
+    def __init__(self, **kwargs):
+        """Creates a `SparseOrdinalEarthMoversDistance` instance."""
+        super().__init__(**kwargs)
+
+    def call(self, y_true, y_pred):
+        """Computes mean absolute error for ordinal labels.
+
+        Args:
+          y_true: Cumulatiuve logits from CondorOrdinal layer.
+          y_pred: Sparse Labels with values in {0,1,...,num_classes-1}
+        """
+        # basic set up
+        cum_probs = ordinal_softmax(y_pred)
+        num_classes = tf.shape(cum_probs)[1]
+        y_true = tf.cast(y_true, y_pred.dtype)
+
+        # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
+        #y_true = tf.squeeze(y_true)
+
+        # each row has distance to true label
+        y_dist = tf.map_fn(
+            fn=lambda y: tf.abs(y - tf.range(num_classes,
+                                dtype=y_pred.dtype)),
+            elems=y_true)
+
+        # pointwise multiplication by the class probabilities, row-wise sums
+        vals = tf.reduce_sum(tf.math.multiply(y_dist,cum_probs),axis=1)
+        return vals

@@ -46,7 +46,9 @@ nav:
           - condor_tensorflow.labelencoder.TransformerMixin: api_modules/condor_tensorflow.labelencoder/TransformerMixin.md
           - condor_tensorflow.loss.CondorOrdinalCrossEntropy: api_modules/condor_tensorflow.loss/CondorOrdinalCrossEntropy.md
           - condor_tensorflow.loss.SparseCondorOrdinalCrossEntropy: api_modules/condor_tensorflow.loss/SparseCondorOrdinalCrossEntropy.md
-          - condor_tensorflow.metrics.OrdinalEarthMoversDistance: api_modules/condor_tensorflow.metrics/OrdinalEarthMoversDistance.md
+          - condor_tensorflow.loss.OrdinalEarthMoversDistance: api_modules/condor_tensorflow.loss/OrdinalEarthMoversDistance.md
+          - condor_tensorflow.loss.SparseOrdinalEarthMoversDistance: api_modules/condor_tensorflow.loss/SparseOrdinalEarthMoversDistance.md
           - condor_tensorflow.metrics.OrdinalMeanAbsoluteError: api_modules/condor_tensorflow.metrics/OrdinalMeanAbsoluteError.md
-          - condor_tensorflow.metrics.SparseOrdinalEarthMoversDistance: api_modules/condor_tensorflow.metrics/SparseOrdinalEarthMoversDistance.md
           - condor_tensorflow.metrics.SparseOrdinalMeanAbsoluteError: api_modules/condor_tensorflow.metrics/SparseOrdinalMeanAbsoluteError.md
+          - condor_tensorflow.metrics.OrdinalAccuracy: api_modules/condor_tensorflow.metrics/OrdinalAccuracy.md
+          - condor_tensorflow.metrics.SparseOrdinalAccuracy: api_modules/condor_tensorflow.metrics/SparseOrdinalAccuracy.md
