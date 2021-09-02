@@ -50,3 +50,5 @@ nav:
           - condor_tensorflow.loss.SparseOrdinalEarthMoversDistance: api_modules/condor_tensorflow.loss/SparseOrdinalEarthMoversDistance.md
           - condor_tensorflow.metrics.OrdinalMeanAbsoluteError: api_modules/condor_tensorflow.metrics/OrdinalMeanAbsoluteError.md
           - condor_tensorflow.metrics.SparseOrdinalMeanAbsoluteError: api_modules/condor_tensorflow.metrics/SparseOrdinalMeanAbsoluteError.md
+          - condor_tensorflow.metrics.OrdinalAccuracy: api_modules/condor_tensorflow.metrics/OrdinalAccuracy.md
+          - condor_tensorflow.metrics.SparseOrdinalAccuracy: api_modules/condor_tensorflow.metrics/SparseOrdinalAccuracy.md

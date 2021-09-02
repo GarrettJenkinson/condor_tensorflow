@@ -15,7 +15,6 @@ Computes mean absolute error for ordinal labels.
     Args:
     y_true: Cumulatiuve logits from CondorOrdinal layer.
     y_pred: Sparse Labels with values in {0,1,...,num_classes-1}
-    sample_weight (optional): Not implemented.
 
 <hr>
 
