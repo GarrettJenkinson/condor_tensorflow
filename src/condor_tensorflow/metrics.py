@@ -111,11 +111,15 @@ class OrdinalAccuracy(tf.keras.metrics.Metric):
     """Computes accuracy for ordinal labels (tolerance is allowed rank
     distance to be considered 'correct' predictions)."""
 
-    def __init__(self, name="ordinal_accuracy_tol",
+    def __init__(self, name=None,
                  tolerance=0,
                  **kwargs):
         """Creates a `OrdinalAccuracy` instance."""
-        super().__init__(name=name+str(tolerance), **kwargs)
+        if name is not None:
+            super().__init__(name=name, **kwargs)
+        else:
+            super().__init__(name="ordinal_accuracy_tol"+str(tolerance),
+                             **kwargs)
         self.accs = self.add_weight(name='accs', initializer='zeros')
         self.count = self.add_weight(name='count', initializer='zeros')
         self.tolerance = tolerance
