@@ -21,7 +21,7 @@ import tensorflow as tf
 print("Tensorflow version", tf.__version__)
 
 import condor_tensorflow as condor
-print("CORAL Ordinal version:", condor.__version__)
+print("CONDOR Ordinal version:", condor.__version__)
 ```
 
 ## Amazon reviews and 5-star ratings
