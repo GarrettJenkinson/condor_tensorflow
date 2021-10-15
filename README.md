@@ -1,4 +1,4 @@
-<img src="docs/img/condor.png" width=300>
+<img src="https://github.com/GarrettJenkinson/condor_tensorflow/raw/main/docs/img/condor.png" width=300>
 
 # Condor Ordinal regression in Tensorflow Keras
 ![Continuous Integration](https://github.com/GarrettJenkinson/condor_tensorflow/actions/workflows/python-test.yml/badge.svg)
@@ -25,7 +25,7 @@ This package includes:
   * Ordinal tensorflow activation function: `ordinal_softmax`
   * Ordinal sklearn label encoder: `CondorOrdinalEncoder`
 
-<img src="docs/img/rankconsistent.png" width=500>
+<img src="https://github.com/GarrettJenkinson/condor_tensorflow/blob/main/docs/img/rankconsistent.png" width=500>
 
 ## Installation
 
@@ -41,7 +41,7 @@ Alternatively install the most recent code on GitHub via pip:
 pip install git+https://github.com/GarrettJenkinson/condor_tensorflow/
 ```
 
-condor_tensorflow should now be available for use as a Python library.
+`condor_tensorflow` should now be available for use as a Python library.
 
 ## Docker container
 
