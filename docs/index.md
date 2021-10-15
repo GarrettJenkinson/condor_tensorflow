@@ -3,7 +3,7 @@
 
 **CONDOR tensorflow implementation for ordinal regression with deep neural networks.**
 
-[![PyPi version](https://pypip.in/v/condor_tensorflow/badge.png)](https://pypi.org/project/condor_tensorflow/)
+[![PyPi version](https://pypip.in/v/condor-tensorflow/badge.png)](https://pypi.org/project/condor-tensorflow/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/raschka-research-group/condor_tensorflow/blob/main/LICENSE)
 ![Python 3](https://img.shields.io/badge/python-3-blue.svg)
 

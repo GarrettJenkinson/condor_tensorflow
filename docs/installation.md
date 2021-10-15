@@ -8,14 +8,14 @@
 - [Python](https://www.python.org) == 3.9.6
 - [Tensorflow](http://www.tensorflow.org) == 2.4.1
 - [sklearn](https://scikit-learn.org/) == 0.24.2 
-- [numpy](https://numpy.org/) == 1.19.5 (newer versions currently incompatibile with tensorflow)
+- [numpy](https://numpy.org/) == 1.19.5 (newer versions currently incompatibile with above tensorflow version)
 
 ## PyPI
 
 You can install the latest stable release of `condor_tensorflow` directly from Python's package index via `pip` by executing the following code from your command line:  
 
 ```bash
-pip install condor_tensorflow
+pip install condor-tensorflow
 ```
 
 

@@ -32,7 +32,7 @@ This package includes:
 Install the stable version via pip:
 
 ```bash
-pip install condor_tensorflow
+pip install condor-tensorflow
 ```
 
 Alternatively install the most recent code on GitHub via pip:
