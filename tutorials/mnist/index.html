@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Garrett Jenkinson">
+  <link rel="canonical" href="http://GarrettJenkinson.github.io/condor_tensorflow/tutorials/mnist/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>MNIST - condor_tensorflow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "MNIST";
+    var mkdocs_page_input_path = "tutorials/mnist.md";
+    var mkdocs_page_url = "/condor_tensorflow/tutorials/mnist/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> condor_tensorflow</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorials</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../amazon/">Amazon Reveiews</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">MNIST</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#import-statements">Import statements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mnist-toy-example">MNIST toy example</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#simple-mlp-model">Simple MLP model</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#test-set-evaluation">Test set evaluation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cumulative-logits-to-probabilities">Cumulative logits to probabilities</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#label-prediction">Label prediction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#importance-weights-customization">Importance weights customization</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../poker/">Poker Hands</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG/">Changelog</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../citing/">Citing</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_subpackages/condor_tensorflow.loss/">condor_tensorflow.loss</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_subpackages/condor_tensorflow.metrics/">condor_tensorflow.metrics</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_subpackages/condor_tensorflow.activations/">condor_tensorflow.activations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_subpackages/condor_tensorflow.labelencoder/">condor_tensorflow.labelencoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/BaseEstimator/">condor_tensorflow.labelencoder.BaseEstimator</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/CondorOrdinalEncoder/">condor_tensorflow.labelencoder.CondorOrdinalEncoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/OrdinalEncoder/">condor_tensorflow.labelencoder.OrdinalEncoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/TransformerMixin/">condor_tensorflow.labelencoder.TransformerMixin</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/CondorOrdinalCrossEntropy/">condor_tensorflow.loss.CondorOrdinalCrossEntropy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/SparseCondorOrdinalCrossEntropy/">condor_tensorflow.loss.SparseCondorOrdinalCrossEntropy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/OrdinalEarthMoversDistance/">condor_tensorflow.loss.OrdinalEarthMoversDistance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/SparseOrdinalEarthMoversDistance/">condor_tensorflow.loss.SparseOrdinalEarthMoversDistance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/OrdinalMeanAbsoluteError/">condor_tensorflow.metrics.OrdinalMeanAbsoluteError</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/SparseOrdinalMeanAbsoluteError/">condor_tensorflow.metrics.SparseOrdinalMeanAbsoluteError</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/OrdinalAccuracy/">condor_tensorflow.metrics.OrdinalAccuracy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/SparseOrdinalAccuracy/">condor_tensorflow.metrics.SparseOrdinalAccuracy</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">condor_tensorflow</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+    
+    <li>MNIST</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/GarrettJenkinson/condor_tensorflow/edit/master/docs/tutorials/mnist.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="condor-ordinal-classificationregression-in-tensorflow-keras">CONDOR Ordinal classification/regression in Tensorflow Keras</h1>
+<h2 id="import-statements">Import statements</h2>
+<pre><code class="language-python">import numpy as np
+import sklearn
+from sklearn import model_selection
+from sklearn.model_selection import train_test_split
+import pandas as pd
+from scipy import special
+import tensorflow_hub as hub
+import os
+import json
+import gzip
+from urllib.request import urlopen
+
+import tensorflow as tf
+print(&quot;Tensorflow version&quot;, tf.__version__)
+
+import condor_tensorflow as condor
+print(&quot;CONDOR Ordinal version:&quot;, condor.__version__)
+</code></pre>
+<h2 id="mnist-toy-example">MNIST toy example</h2>
+<p>This outcome is not actually ordinal, it's categorical. We're just using it as a toy example to show how the different components are used.</p>
+<pre><code class="language-python"># Hyperparameters
+random_seed = 1 # Not yet used
+learning_rate = 0.05
+batch_size = 128
+num_epochs = 2
+
+# Architecture
+NUM_CLASSES = 10
+</code></pre>
+<pre><code class="language-python"># Fetch and format the mnist data
+(mnist_images, mnist_labels), (mnist_images_test, mnist_labels_test) = tf.keras.datasets.mnist.load_data()
+
+# Split off a validation dataset for early stopping
+mnist_images, mnist_images_val, mnist_labels, mnist_labels_val = \
+  model_selection.train_test_split(mnist_images, mnist_labels, test_size = 5000, random_state = 1)
+
+print(&quot;Shape of training images:&quot;, mnist_images.shape)
+print(&quot;Shape of training labels:&quot;, mnist_labels.shape)
+
+print(&quot;Shape of test images:&quot;, mnist_images_test.shape)
+print(&quot;Shape of test labels:&quot;, mnist_labels_test.shape)
+
+print(&quot;Shape of validation images:&quot;, mnist_images_val.shape)
+print(&quot;Shape of validation labels:&quot;, mnist_labels_val.shape)
+
+# Also rescales to 0-1 range.
+dataset = tf.data.Dataset.from_tensor_slices(
+  (tf.cast(mnist_images[..., tf.newaxis] / 255, tf.float32),
+   tf.cast(mnist_labels, tf.int64)))
+dataset = dataset.shuffle(1000).batch(batch_size)
+
+test_dataset = tf.data.Dataset.from_tensor_slices(
+  (tf.cast(mnist_images_test[..., tf.newaxis] / 255, tf.float32),
+   tf.cast(mnist_labels_test, tf.int64)))
+#test_dataset = test_dataset.shuffle(1000).batch(batch_size)
+# Here we do not shuffle the test dataset.
+test_dataset = test_dataset.batch(batch_size)
+
+
+val_dataset = tf.data.Dataset.from_tensor_slices(
+  (tf.cast(mnist_images_val[..., tf.newaxis] / 255, tf.float32),
+   tf.cast(mnist_labels_val, tf.int64)))
+val_dataset = val_dataset.shuffle(1000).batch(batch_size)
+</code></pre>
+<h3 id="simple-mlp-model">Simple MLP model</h3>
+<p>Now we create a simple multi-layer perceptron model so that we can apply the ordinal output layer.</p>
+<pre><code class="language-python">def create_model(num_classes):
+  model = tf.keras.Sequential()
+  model.add(tf.keras.layers.Flatten(input_shape = (28, 28, )))
+  model.add(tf.keras.layers.Dense(128, activation = &quot;relu&quot;))
+  model.add(tf.keras.layers.Dropout(0.2))
+  model.add(tf.keras.layers.Dense(32, activation = &quot;relu&quot;))
+  model.add(tf.keras.layers.Dropout(0.1))
+  # No activation function specified so this will output cumulative logits.
+  model.add(tf.keras.layers.Dense(num_classes-1))
+  return model
+
+model = create_model(NUM_CLASSES)
+
+# Note that the model generates 1 fewer outputs than the number of classes. 
+model.summary()
+</code></pre>
+<pre><code class="language-python"># Or a functional API version
+def create_model2(num_classes):
+  inputs = tf.keras.Input(shape = (28, 28, ))
+
+  x = tf.keras.layers.Flatten()(inputs)
+  x = tf.keras.layers.Dense(128, activation = &quot;relu&quot;)(x)
+  x = tf.keras.layers.Dropout(0.2)(x)
+  x = tf.keras.layers.Dense(32, activation = &quot;relu&quot;)(x)
+  x = tf.keras.layers.Dropout(0.1)(x)
+  # No activation function specified so this will output cumulative logits.
+  outputs = tf.keras.layers.Dense(num_classes-1)(x)
+
+  model = tf.keras.Model(inputs = inputs, outputs = outputs)
+
+  return model
+
+model = create_model2(NUM_CLASSES)
+
+# Note that the model generates 1 fewer outputs than the number of classes. 
+model.summary()
+</code></pre>
+<pre><code class="language-python">model.compile(optimizer = tf.keras.optimizers.Adam(learning_rate = learning_rate),
+              loss = condor.SparseCondorOrdinalCrossEntropy(),
+              metrics = [condor.SparseOrdinalEarthMoversDistance(),
+                         condor.SparseOrdinalMeanAbsoluteError()])
+</code></pre>
+<pre><code class="language-python">history = model.fit(dataset, epochs = 5, validation_data = val_dataset,
+                    callbacks = [tf.keras.callbacks.EarlyStopping(patience = 3, restore_best_weights = True)])
+</code></pre>
+<h3 id="test-set-evaluation">Test set evaluation</h3>
+<pre><code class="language-python"># Evaluate on test dataset.
+model.evaluate(test_dataset)
+</code></pre>
+<h3 id="cumulative-logits-to-probabilities">Cumulative logits to probabilities</h3>
+<p>We can convert the cumulative logit output of the layer into the probability estimate for each ordinal label. This can then be used to calculate other metrics like accuracy or mean absolute error.</p>
+<p>Notice that the probability distribution for each observation is unimodal, which is what we want for an ordinal outcome variable.</p>
+<pre><code class="language-python">print(&quot;Predict on test dataset&quot;)
+
+# Note that these are ordinal (cumulative) logits, not probabilities or regular logits.
+ordinal_logits = model.predict(test_dataset)
+
+# Convert from logits to label probabilities. This is initially a tensorflow tensor.
+tensor_probs = condor.ordinal_softmax(ordinal_logits)
+
+# Convert the tensor into a pandas dataframe.
+probs_df = pd.DataFrame(tensor_probs.numpy())
+
+probs_df.head()
+</code></pre>
+<pre><code class="language-python"># Check that probabilities all sum to 1 - looks good!
+probs_df.sum(axis = 1)
+</code></pre>
+<h3 id="label-prediction">Label prediction</h3>
+<p>This notebook shows two ways of calculating predicted labels. We can take the highest probability label (first method) or we can choose the highest label with Pr(Y &gt; label) &gt; 50%.</p>
+<pre><code class="language-python"># Probs to labels
+labels = probs_df.idxmax(axis = 1)
+labels.values
+</code></pre>
+<pre><code class="language-python"># What is our accuracy? Around 69%.
+np.mean(labels == mnist_labels_test)
+</code></pre>
+<pre><code class="language-python"># Compare to logit-based cumulative probs
+cum_probs = pd.DataFrame(ordinal_logits).apply(special.expit).cumprod(axis=1)
+cum_probs.head()
+</code></pre>
+<p>Now we should try another option, which is used in the Cao et al. paper.</p>
+<pre><code class="language-python"># Calculate the labels using the style of Cao et al.
+labels2 = cum_probs.apply(lambda x: x &gt; 0.5).sum(axis = 1)
+labels2.head()
+</code></pre>
+<pre><code class="language-python"># What is the accuracy of these labels? 
+np.mean(labels2 == mnist_labels_test)
+</code></pre>
+<pre><code class="language-python"># More often than not these are the same, but still a lot of discrepancy.
+np.mean(labels == labels2)
+</code></pre>
+<pre><code class="language-python">print(&quot;Mean absolute label error version 1:&quot;, np.mean(np.abs(labels - mnist_labels_test)))
+print(&quot;Mean absolute label error version 2:&quot;, np.mean(np.abs(labels2 - mnist_labels_test)))
+</code></pre>
+<pre><code class="language-python">mnist_labels_test[:5]
+</code></pre>
+<h3 id="importance-weights-customization">Importance weights customization</h3>
+<p>A quick example to show how the importance weights can be customized. </p>
+<pre><code class="language-python">model = create_model(num_classes = NUM_CLASSES)
+model.summary()
+
+# We have num_classes - 1 outputs (cumulative logits), so there are 9 elements
+# in the importance vector to customize.
+importance_weights = [1., 1., 0.5, 0.5, 0.5, 1., 1., 0.1, 0.1]
+loss_fn = condor.SparseCondorOrdinalCrossEntropy(importance_weights = importance_weights)
+
+model.compile(tf.keras.optimizers.Adam(lr = learning_rate), loss = loss_fn)
+</code></pre>
+<pre><code class="language-python">history = model.fit(dataset, epochs = num_epochs)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../poker/" class="btn btn-neutral float-right" title="Poker Hands">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../amazon/" class="btn btn-neutral" title="Amazon Reveiews"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2021 <a href="http://github.com/GarrettJenkinson">Garrett Jenkinson</a></p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/GarrettJenkinson/condor_tensorflow/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../amazon/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../poker/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" defer></script>
+      <script src="../../mathjaxhelper.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

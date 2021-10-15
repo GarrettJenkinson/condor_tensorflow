@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Garrett Jenkinson">
+  <link rel="canonical" href="http://GarrettJenkinson.github.io/condor_tensorflow/tutorials/amazon/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Amazon Reveiews - condor_tensorflow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Amazon Reveiews";
+    var mkdocs_page_input_path = "tutorials/amazon.md";
+    var mkdocs_page_url = "/condor_tensorflow/tutorials/amazon/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> condor_tensorflow</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorials</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Amazon Reveiews</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#import-statements">Import statements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#amazon-reviews-and-5-star-ratings">Amazon reviews and 5-star ratings</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#universal-sentence-encoder-model-minimal-code-changes">Universal Sentence Encoder model (minimal code changes)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#evaluate">Evaluate</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#evaluate-accuracy">Evaluate accuracy</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#evaluate-mean-absolute-label-error">Evaluate mean absolute label error</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#universal-sentence-encoder-model-speed-up-using-encodings">Universal Sentence Encoder model (speed up using encodings)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#more-examples-of-label-encoding-capabilities">More examples of label encoding capabilities</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../mnist/">MNIST</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../poker/">Poker Hands</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG/">Changelog</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../citing/">Citing</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_subpackages/condor_tensorflow.loss/">condor_tensorflow.loss</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_subpackages/condor_tensorflow.metrics/">condor_tensorflow.metrics</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_subpackages/condor_tensorflow.activations/">condor_tensorflow.activations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_subpackages/condor_tensorflow.labelencoder/">condor_tensorflow.labelencoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/BaseEstimator/">condor_tensorflow.labelencoder.BaseEstimator</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/CondorOrdinalEncoder/">condor_tensorflow.labelencoder.CondorOrdinalEncoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/OrdinalEncoder/">condor_tensorflow.labelencoder.OrdinalEncoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/TransformerMixin/">condor_tensorflow.labelencoder.TransformerMixin</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/CondorOrdinalCrossEntropy/">condor_tensorflow.loss.CondorOrdinalCrossEntropy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/SparseCondorOrdinalCrossEntropy/">condor_tensorflow.loss.SparseCondorOrdinalCrossEntropy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/OrdinalEarthMoversDistance/">condor_tensorflow.loss.OrdinalEarthMoversDistance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/SparseOrdinalEarthMoversDistance/">condor_tensorflow.loss.SparseOrdinalEarthMoversDistance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/OrdinalMeanAbsoluteError/">condor_tensorflow.metrics.OrdinalMeanAbsoluteError</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/SparseOrdinalMeanAbsoluteError/">condor_tensorflow.metrics.SparseOrdinalMeanAbsoluteError</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/OrdinalAccuracy/">condor_tensorflow.metrics.OrdinalAccuracy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/SparseOrdinalAccuracy/">condor_tensorflow.metrics.SparseOrdinalAccuracy</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">condor_tensorflow</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+    
+    <li>Amazon Reveiews</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/GarrettJenkinson/condor_tensorflow/edit/master/docs/tutorials/amazon.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="condor-ordinal-classificationregression-in-tensorflow-keras">CONDOR Ordinal classification/regression in Tensorflow Keras</h1>
+<h2 id="import-statements">Import statements</h2>
+<pre><code class="language-python">import numpy as np
+import sklearn
+from sklearn import model_selection
+from sklearn.model_selection import train_test_split
+import pandas as pd
+from scipy import special
+import tensorflow_hub as hub
+import os
+import json
+import gzip
+from urllib.request import urlopen
+
+import tensorflow as tf
+print(&quot;Tensorflow version&quot;, tf.__version__)
+
+import condor_tensorflow as condor
+print(&quot;CONDOR Ordinal version:&quot;, condor.__version__)
+</code></pre>
+<h2 id="amazon-reviews-and-5-star-ratings">Amazon reviews and 5-star ratings</h2>
+<p>Amazon review data via https://nijianmo.github.io/amazon/index.html#subsets</p>
+<pre><code>!curl -o Prime_Pantry_5.json.gz http://deepyeti.ucsd.edu/jianmo/amazon/categoryFilesSmall/Prime_Pantry_5.json.gz 
+</code></pre>
+<pre><code class="language-python">data = []
+with gzip.open('Prime_Pantry_5.json.gz') as f:
+    for l in f:
+        data.append(json.loads(l.strip()))
+
+df = pd.DataFrame.from_dict(data)
+df = df[['overall', 'reviewText']]
+
+# There is a large amount of duplicate text in here, possibly due to paid/fraudulent reviews.
+df.drop_duplicates(&quot;reviewText&quot;, inplace = True)
+
+# Some of the text is blank, which causes an obscure error about floating point conversion.
+df.dropna(inplace = True)
+
+print(len(df))
+print(df.head())
+
+outcome_col = &quot;overall&quot;
+text_col = &quot;reviewText&quot;
+
+# We subtract the minimum value from the outcomes so that they start at 0.
+df[outcome_col] = df[outcome_col].values - df[outcome_col].min()
+
+print(&quot;\n&quot;, df.overall.value_counts())
+
+# TODO: define automatically based on the number of unique values in the outcome variable.
+num_classes = 5
+</code></pre>
+<pre><code class="language-python"># Train/Test split
+text_train, text_test, labels_train, labels_test = \
+  train_test_split(df[text_col].values, df[outcome_col].values, test_size = 10000, random_state = 1)
+
+print(&quot;Training text shape:&quot;, text_train.shape)
+print(&quot;Training labels shape:&quot;, labels_train.shape)
+print(&quot;Testing text shape:&quot;, text_test.shape)
+print(&quot;Testing labels shape:&quot;, labels_test.shape)
+</code></pre>
+<h3 id="universal-sentence-encoder-model-minimal-code-changes">Universal Sentence Encoder model (minimal code changes)</h3>
+<pre><code class="language-python"># This takes 20 - 30 seconds.
+
+# Clear our GPU memory to stay efficient.
+tf.keras.backend.clear_session()
+
+input_text = tf.keras.layers.Input(shape = [], dtype = tf.string, name = 'input_text')
+
+model_url = hub.load(&quot;https://tfhub.dev/google/universal-sentence-encoder-large/5&quot;)
+
+base_model = hub.KerasLayer(model_url, input_shape = [],
+                            dtype = tf.string,
+                            trainable = False)
+
+embedded = base_model(input_text)
+
+x = tf.keras.layers.Dense(64, activation = 'relu')(embedded)
+x = tf.keras.layers.Dropout(0.1)(x)
+output =tf.keras.layers.Dense(num_classes-1)(x) 
+
+model = tf.keras.Model(inputs = input_text, outputs = output)
+
+model.summary()
+</code></pre>
+<pre><code class="language-python">model.compile(loss = condor.SparseCondorOrdinalCrossEntropy(),
+              metrics = [condor.SparseOrdinalEarthMoversDistance(),
+                         condor.SparseOrdinalMeanAbsoluteError()],
+              optimizer = tf.keras.optimizers.Adam(learning_rate = 0.001))
+</code></pre>
+<pre><code class="language-python"># Encode a test string and take a look at the first ten dimensions.
+base_model(np.array([&quot;test_string&quot;])).numpy()[0, :10]
+</code></pre>
+<pre><code class="language-python">history = model.fit(x = text_train,
+                    y = labels_train,
+                    epochs = 5,
+                    batch_size = 32, 
+                    validation_split = 0.2,
+                    callbacks = [tf.keras.callbacks.EarlyStopping(patience = 2,
+                                                                  min_delta = 0.001,
+                                                                  restore_best_weights = True)])
+</code></pre>
+<h4 id="evaluate">Evaluate</h4>
+<pre><code class="language-python"># For comparison, CORAL achieves loss 0.7962, MAE 0.3195
+model.evaluate(text_test, labels_test) 
+</code></pre>
+<pre><code class="language-python"># Generate predictions - initially these are cumulative logits.
+preds = model.predict(text_test)
+print(preds)
+# Convert cumulative logits to probabilities for each class aka rank or label.
+probs = pd.DataFrame(condor.ordinal_softmax(preds).numpy())
+</code></pre>
+<pre><code class="language-python">print(probs.head(10))
+print(labels_test[:10])
+</code></pre>
+<h4 id="evaluate-accuracy">Evaluate accuracy</h4>
+<pre><code class="language-python"># Evaluate accuracy and mean absolute error
+labels_v1 = probs.idxmax(axis = 1)
+print(&quot;Accuracy of label version 1:&quot;, np.mean(labels_v1 == labels_test))
+
+# Compare to logit-based cumulative probs
+cum_probs = pd.DataFrame(preds).apply(special.expit).cumprod(axis=1)
+# Calculate the labels using the style of Cao et al.
+labels_v2 = cum_probs.apply(lambda x: x &gt; 0.5).sum(axis = 1)
+print(&quot;Accuracy of label version 2:&quot;, np.mean(labels_v2 == labels_test))
+</code></pre>
+<h4 id="evaluate-mean-absolute-label-error">Evaluate mean absolute label error</h4>
+<p>This is effectively an ordinal version of 1 - accuracy.</p>
+<pre><code class="language-python"># These do not correspond with what we get from the model evaluation. Something must be off in one of these.
+print(&quot;Mean absolute label error version 1:&quot;, np.mean(np.abs(labels_v1 - labels_test)))
+print(&quot;Mean absolute label error version 2:&quot;, np.mean(np.abs(labels_v2 - labels_test)))
+
+print(&quot;Root mean squared label error version 1:&quot;, np.sqrt(np.mean(np.square(labels_v1 - labels_test))))
+print(&quot;Root mean squared label error version 2:&quot;, np.sqrt(np.mean(np.square(labels_v2 - labels_test))))
+</code></pre>
+<pre><code class="language-python"># Review how absolute error is calculated for ordinal labels:
+pd.DataFrame({&quot;true&quot;: labels_test, &quot;pred_v2&quot;: labels_v1, &quot;abs&quot;: labels_v2 - labels_test}).head()
+</code></pre>
+<h3 id="universal-sentence-encoder-model-speed-up-using-encodings">Universal Sentence Encoder model (speed up using encodings)</h3>
+<p>The "Sparse" versions of the CONDOR API are convenient and require minimal code changes. However there is a performance overhead compared to if we pre-encode the labels using CONDORs ordinal encoder. The sparse API is basically encoding on the fly inside the training loop. </p>
+<p>Also as we will see later, the labels do not always come encoded as 0,1,...,K-1. In this case, using the CondorOrdinalEncoder will help transform labels into ordinal-ready values.</p>
+<pre><code class="language-python"># pre-encoding runs very fast so the savings later are worth it
+enc = condor.CondorOrdinalEncoder(nclasses=num_classes)
+enc_labs_train = enc.fit_transform(labels_train)
+enc_labs_test = enc.transform(labels_test)
+</code></pre>
+<pre><code class="language-python"># Note the lack of &quot;Sparse&quot; in the condor functions here
+model.compile(loss = condor.CondorOrdinalCrossEntropy(),
+              metrics = [condor.OrdinalEarthMoversDistance(),
+                         condor.OrdinalMeanAbsoluteError()],
+              optimizer = tf.keras.optimizers.Adam(learning_rate = 0.001))
+</code></pre>
+<pre><code class="language-python"># note the encoded labels are passed to the fit now
+history = model.fit(x = text_train,
+                    y = enc_labs_train,
+                    epochs = 5,
+                    batch_size = 32, 
+                    validation_split = 0.2,
+                    callbacks = [tf.keras.callbacks.EarlyStopping(patience = 2,
+                                                                  min_delta = 0.001,
+                                                                  restore_best_weights = True)])
+</code></pre>
+<pre><code class="language-python">model.evaluate(text_test, enc_labs_test) 
+</code></pre>
+<h4 id="more-examples-of-label-encoding-capabilities">More examples of label encoding capabilities</h4>
+<p>Here we demo the features of the ordinal encoder.</p>
+<pre><code class="language-python"># Here the ordinal encoder figures out how many classes there are automatically
+# and orders them in the default sklearn OrdinalEncoder fashion 
+# (i.e., alphabetically here)
+labels = np.array(['a','b','c','d','e'])
+enc_labs = condor.CondorOrdinalEncoder().fit_transform(labels)
+print(enc_labs)
+</code></pre>
+<pre><code class="language-python"># Here the ordinal encoder figures out how many classes there are automatically
+# and orders them in the default sklearn OrdinalEncoder fashion 
+# (i.e., alphabetically here). This time it is dealing with a basic list.
+labels = ['a','b','c','d','e']
+enc_labs = condor.CondorOrdinalEncoder().fit_transform(labels)
+
+print(enc_labs)
+</code></pre>
+<pre><code class="language-python"># Here we wish to specify the order to be different from alphabetical. Note
+# this would also allow &quot;missing&quot; categories to be included in proper order.
+labels = ['low','med','high']
+enc = condor.CondorOrdinalEncoder(categories=[['low', 'med', 'high']])
+enc_labs = enc.fit_transform(labels)
+
+print(enc_labs)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../mnist/" class="btn btn-neutral float-right" title="MNIST">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../.." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2021 <a href="http://github.com/GarrettJenkinson">Garrett Jenkinson</a></p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/GarrettJenkinson/condor_tensorflow/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../mnist/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" defer></script>
+      <script src="../../mathjaxhelper.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

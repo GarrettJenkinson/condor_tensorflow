@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Garrett Jenkinson">
+  <link rel="canonical" href="http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.metrics/SparseOrdinalAccuracy/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>condor_tensorflow.metrics.SparseOrdinalAccuracy - condor_tensorflow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../../extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "condor_tensorflow.metrics.SparseOrdinalAccuracy";
+    var mkdocs_page_input_path = "api_modules/condor_tensorflow.metrics/SparseOrdinalAccuracy.md";
+    var mkdocs_page_url = "/condor_tensorflow/api_modules/condor_tensorflow.metrics/SparseOrdinalAccuracy/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> condor_tensorflow</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorials</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/amazon/">Amazon Reveiews</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/mnist/">MNIST</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/poker/">Poker Hands</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../installation/">Installation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG/">Changelog</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../citing/">Citing</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../license/">License</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api_subpackages/condor_tensorflow.loss/">condor_tensorflow.loss</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api_subpackages/condor_tensorflow.metrics/">condor_tensorflow.metrics</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api_subpackages/condor_tensorflow.activations/">condor_tensorflow.activations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api_subpackages/condor_tensorflow.labelencoder/">condor_tensorflow.labelencoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.labelencoder/BaseEstimator/">condor_tensorflow.labelencoder.BaseEstimator</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.labelencoder/CondorOrdinalEncoder/">condor_tensorflow.labelencoder.CondorOrdinalEncoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.labelencoder/OrdinalEncoder/">condor_tensorflow.labelencoder.OrdinalEncoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.labelencoder/TransformerMixin/">condor_tensorflow.labelencoder.TransformerMixin</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.loss/CondorOrdinalCrossEntropy/">condor_tensorflow.loss.CondorOrdinalCrossEntropy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.loss/SparseCondorOrdinalCrossEntropy/">condor_tensorflow.loss.SparseCondorOrdinalCrossEntropy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.loss/OrdinalEarthMoversDistance/">condor_tensorflow.loss.OrdinalEarthMoversDistance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.loss/SparseOrdinalEarthMoversDistance/">condor_tensorflow.loss.SparseOrdinalEarthMoversDistance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../OrdinalMeanAbsoluteError/">condor_tensorflow.metrics.OrdinalMeanAbsoluteError</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../SparseOrdinalMeanAbsoluteError/">condor_tensorflow.metrics.SparseOrdinalMeanAbsoluteError</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../OrdinalAccuracy/">condor_tensorflow.metrics.OrdinalAccuracy</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">condor_tensorflow.metrics.SparseOrdinalAccuracy</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">condor_tensorflow</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API &raquo;</li>
+        
+      
+    
+    <li>condor_tensorflow.metrics.SparseOrdinalAccuracy</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/GarrettJenkinson/condor_tensorflow/edit/master/docs/api_modules/condor_tensorflow.metrics/SparseOrdinalAccuracy.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="sparseordinalaccuracy">SparseOrdinalAccuracy</h2>
+<p><em>SparseOrdinalAccuracy(</em>args, *<em>kwargs)</em></p>
+<p>Computes accuracy for ordinal labels (tolerance is allowed rank
+    distance to be considered 'correct' predictions).</p>
+<h3 id="methods">Methods</h3>
+<hr>
+
+<p><em>add_loss(losses, </em><em>kwargs)</em></p>
+<p>Add loss tensor(s), potentially dependent on layer inputs.</p>
+<pre><code>Some losses (for instance, activity regularization losses) may be dependent
+on the inputs passed when calling a layer. Hence, when reusing the same
+layer on different inputs `a` and `b`, some entries in `layer.losses` may
+be dependent on `a` and some on `b`. This method automatically keeps track
+of dependencies.
+
+This method can be used inside a subclassed layer or model's `call`
+function, in which case `losses` should be a Tensor or list of Tensors.
+
+Example:
+
+```python
+class MyLayer(tf.keras.layers.Layer):
+def call(self, inputs):
+self.add_loss(tf.abs(tf.reduce_mean(inputs)))
+return inputs
+```
+
+This method can also be called directly on a Functional Model during
+construction. In this case, any loss Tensors passed to this Model must
+be symbolic and be able to be traced back to the model's `Input`s. These
+losses become part of the model's topology and are tracked in `get_config`.
+
+Example:
+
+```python
+inputs = tf.keras.Input(shape=(10,))
+x = tf.keras.layers.Dense(10)(inputs)
+outputs = tf.keras.layers.Dense(1)(x)
+model = tf.keras.Model(inputs, outputs)
+# Activity regularization.
+model.add_loss(tf.abs(tf.reduce_mean(x)))
+```
+
+If this is not the case for your loss (if, for example, your loss references
+a `Variable` of one of the model's layers), you can wrap your loss in a
+zero-argument lambda. These losses are not tracked as part of the model's
+topology since they can't be serialized.
+
+Example:
+
+```python
+inputs = tf.keras.Input(shape=(10,))
+d = tf.keras.layers.Dense(10)
+x = d(inputs)
+outputs = tf.keras.layers.Dense(1)(x)
+model = tf.keras.Model(inputs, outputs)
+# Weight regularization.
+model.add_loss(lambda: tf.reduce_mean(d.kernel))
+```
+
+Arguments:
+losses: Loss tensor, or list/tuple of tensors. Rather than tensors, losses
+may also be zero-argument callables which create a loss tensor.
+</code></pre>
+<p>**kwargs: Additional keyword arguments for backward compatibility.
+    Accepted values:</p>
+<p>inputs - Deprecated, will be automatically inferred.</p>
+<hr>
+
+<p><em>add_metric(value, name=None, </em><em>kwargs)</em></p>
+<p>Adds metric tensor to the layer.</p>
+<pre><code>This method can be used inside the `call()` method of a subclassed layer
+or model.
+
+```python
+class MyMetricLayer(tf.keras.layers.Layer):
+def __init__(self):
+super(MyMetricLayer, self).__init__(name='my_metric_layer')
+self.mean = tf.keras.metrics.Mean(name='metric_1')
+
+def call(self, inputs):
+self.add_metric(self.mean(x))
+self.add_metric(tf.reduce_sum(x), name='metric_2')
+return inputs
+```
+
+This method can also be called directly on a Functional Model during
+construction. In this case, any tensor passed to this Model must
+be symbolic and be able to be traced back to the model's `Input`s. These
+metrics become part of the model's topology and are tracked when you
+save the model via `save()`.
+
+```python
+inputs = tf.keras.Input(shape=(10,))
+x = tf.keras.layers.Dense(10)(inputs)
+outputs = tf.keras.layers.Dense(1)(x)
+model = tf.keras.Model(inputs, outputs)
+model.add_metric(math_ops.reduce_sum(x), name='metric_1')
+```
+
+Note: Calling `add_metric()` with the result of a metric object on a
+Functional Model, as shown in the example below, is not supported. This is
+because we cannot trace the metric result tensor back to the model's inputs.
+
+```python
+inputs = tf.keras.Input(shape=(10,))
+x = tf.keras.layers.Dense(10)(inputs)
+outputs = tf.keras.layers.Dense(1)(x)
+model = tf.keras.Model(inputs, outputs)
+model.add_metric(tf.keras.metrics.Mean()(x), name='metric_1')
+```
+
+Args:
+value: Metric tensor.
+name: String metric name.
+</code></pre>
+<p>**kwargs: Additional keyword arguments for backward compatibility.
+    Accepted values:</p>
+<p><code>aggregation</code> - When the <code>value</code> tensor provided is not the result of
+    calling a <code>keras.Metric</code> instance, it will be aggregated by default
+    using a <code>keras.Metric.Mean</code>.</p>
+<hr>
+
+<p><em>add_update(updates, inputs=None)</em></p>
+<p>Add update op(s), potentially dependent on layer inputs.</p>
+<pre><code>Weight updates (for instance, the updates of the moving mean and variance
+in a BatchNormalization layer) may be dependent on the inputs passed
+when calling a layer. Hence, when reusing the same layer on
+different inputs `a` and `b`, some entries in `layer.updates` may be
+dependent on `a` and some on `b`. This method automatically keeps track
+of dependencies.
+
+This call is ignored when eager execution is enabled (in that case, variable
+updates are run on the fly and thus do not need to be tracked for later
+execution).
+
+Arguments:
+updates: Update op, or list/tuple of update ops, or zero-arg callable
+that returns an update op. A zero-arg callable should be passed in
+order to disable running the updates by setting `trainable=False`
+on this Layer, when executing in Eager mode.
+inputs: Deprecated, will be automatically inferred.
+</code></pre>
+<hr>
+
+<p><em>add_variable(</em>args, *<em>kwargs)</em></p>
+<p>Deprecated, do NOT use! Alias for <code>add_weight</code>.</p>
+<hr>
+
+<p><em>add_weight(name, shape=(), aggregation=<VariableAggregation.SUM: 1>, synchronization=<VariableSynchronization.ON_READ: 3>, initializer=None, dtype=None)</em></p>
+<p>Adds state variable. Only for use by subclasses.</p>
+<hr>
+
+<p><em>apply(inputs, </em>args, *<em>kwargs)</em></p>
+<p>Deprecated, do NOT use!</p>
+<pre><code>This is an alias of `self.__call__`.
+
+Arguments:
+inputs: Input tensor(s).
+*args: additional positional arguments to be passed to `self.call`.
+</code></pre>
+<p>**kwargs: additional keyword arguments to be passed to <code>self.call</code>.</p>
+<p>Returns:
+    Output tensor(s).</p>
+<hr>
+
+<p><em>build(input_shape)</em></p>
+<p>Creates the variables of the layer (optional, for subclass implementers).</p>
+<pre><code>This is a method that implementers of subclasses of `Layer` or `Model`
+can override if they need a state-creation step in-between
+layer instantiation and layer call.
+
+This is typically used to create the weights of `Layer` subclasses.
+
+Arguments:
+input_shape: Instance of `TensorShape`, or list of instances of
+`TensorShape` if the layer expects a list of inputs
+(one instance per input).
+</code></pre>
+<hr>
+
+<p><em>call(inputs, </em><em>kwargs)</em></p>
+<p>This is where the layer's logic lives.</p>
+<pre><code>Note here that `call()` method in `tf.keras` is little bit different
+from `keras` API. In `keras` API, you can pass support masking for
+layers as additional arguments. Whereas `tf.keras` has `compute_mask()`
+method to support masking.
+
+Arguments:
+inputs: Input tensor, or list/tuple of input tensors.
+</code></pre>
+<p>**kwargs: Additional keyword arguments. Currently unused.</p>
+<p>Returns:
+    A tensor or list/tuple of tensors.</p>
+<hr>
+
+<p><em>compute_mask(inputs, mask=None)</em></p>
+<p>Computes an output mask tensor.</p>
+<pre><code>Arguments:
+inputs: Tensor or list of tensors.
+mask: Tensor or list of tensors.
+
+Returns:
+None or a tensor (or list of tensors,
+one per output tensor of the layer).
+</code></pre>
+<hr>
+
+<p><em>compute_output_shape(input_shape)</em></p>
+<p>Computes the output shape of the layer.</p>
+<pre><code>If the layer has not been built, this method will call `build` on the
+layer. This assumes that the layer will later be used with inputs that
+match the input shape provided here.
+
+Arguments:
+input_shape: Shape tuple (tuple of integers)
+or list of shape tuples (one per output tensor of the layer).
+Shape tuples can include None for free dimensions,
+instead of an integer.
+
+Returns:
+An input shape tuple.
+</code></pre>
+<hr>
+
+<p><em>compute_output_signature(input_signature)</em></p>
+<p>Compute the output tensor signature of the layer based on the inputs.</p>
+<pre><code>Unlike a TensorShape object, a TensorSpec object contains both shape
+and dtype information for a tensor. This method allows layers to provide
+output dtype information if it is different from the input dtype.
+For any layer that doesn't implement this function,
+the framework will fall back to use `compute_output_shape`, and will
+assume that the output dtype matches the input dtype.
+
+Args:
+input_signature: Single TensorSpec or nested structure of TensorSpec
+objects, describing a candidate input for the layer.
+
+Returns:
+Single TensorSpec or nested structure of TensorSpec objects, describing
+how the layer would transform the provided input.
+
+Raises:
+TypeError: If input_signature contains a non-TensorSpec object.
+</code></pre>
+<hr>
+
+<p><em>count_params()</em></p>
+<p>Count the total number of scalars composing the weights.</p>
+<pre><code>Returns:
+An integer count.
+
+Raises:
+ValueError: if the layer isn't yet built
+(in which case its weights aren't yet defined).
+</code></pre>
+<hr>
+
+<p><em>from_config(config)</em></p>
+<p>Creates a layer from its config.</p>
+<pre><code>This method is the reverse of `get_config`,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by `set_weights`).
+
+Arguments:
+config: A Python dictionary, typically the
+output of get_config.
+
+Returns:
+A layer instance.
+</code></pre>
+<hr>
+
+<p><em>get_config()</em></p>
+<p>Returns the serializable config of the metric.</p>
+<hr>
+
+<p><em>get_input_at(node_index)</em></p>
+<p>Retrieves the input tensor(s) of a layer at a given node.</p>
+<pre><code>Arguments:
+node_index: Integer, index of the node
+from which to retrieve the attribute.
+E.g. `node_index=0` will correspond to the
+first time the layer was called.
+
+Returns:
+A tensor (or list of tensors if the layer has multiple inputs).
+
+Raises:
+RuntimeError: If called in Eager mode.
+</code></pre>
+<hr>
+
+<p><em>get_input_mask_at(node_index)</em></p>
+<p>Retrieves the input mask tensor(s) of a layer at a given node.</p>
+<pre><code>Arguments:
+node_index: Integer, index of the node
+from which to retrieve the attribute.
+E.g. `node_index=0` will correspond to the
+first time the layer was called.
+
+Returns:
+A mask tensor
+(or list of tensors if the layer has multiple inputs).
+</code></pre>
+<hr>
+
+<p><em>get_input_shape_at(node_index)</em></p>
+<p>Retrieves the input shape(s) of a layer at a given node.</p>
+<pre><code>Arguments:
+node_index: Integer, index of the node
+from which to retrieve the attribute.
+E.g. `node_index=0` will correspond to the
+first time the layer was called.
+
+Returns:
+A shape tuple
+(or list of shape tuples if the layer has multiple inputs).
+
+Raises:
+RuntimeError: If called in Eager mode.
+</code></pre>
+<hr>
+
+<p><em>get_losses_for(inputs)</em></p>
+<p>Deprecated, do NOT use!</p>
+<pre><code>Retrieves losses relevant to a specific set of inputs.
+
+Arguments:
+inputs: Input tensor or list/tuple of input tensors.
+
+Returns:
+List of loss tensors of the layer that depend on `inputs`.
+</code></pre>
+<hr>
+
+<p><em>get_output_at(node_index)</em></p>
+<p>Retrieves the output tensor(s) of a layer at a given node.</p>
+<pre><code>Arguments:
+node_index: Integer, index of the node
+from which to retrieve the attribute.
+E.g. `node_index=0` will correspond to the
+first time the layer was called.
+
+Returns:
+A tensor (or list of tensors if the layer has multiple outputs).
+
+Raises:
+RuntimeError: If called in Eager mode.
+</code></pre>
+<hr>
+
+<p><em>get_output_mask_at(node_index)</em></p>
+<p>Retrieves the output mask tensor(s) of a layer at a given node.</p>
+<pre><code>Arguments:
+node_index: Integer, index of the node
+from which to retrieve the attribute.
+E.g. `node_index=0` will correspond to the
+first time the layer was called.
+
+Returns:
+A mask tensor
+(or list of tensors if the layer has multiple outputs).
+</code></pre>
+<hr>
+
+<p><em>get_output_shape_at(node_index)</em></p>
+<p>Retrieves the output shape(s) of a layer at a given node.</p>
+<pre><code>Arguments:
+node_index: Integer, index of the node
+from which to retrieve the attribute.
+E.g. `node_index=0` will correspond to the
+first time the layer was called.
+
+Returns:
+A shape tuple
+(or list of shape tuples if the layer has multiple outputs).
+
+Raises:
+RuntimeError: If called in Eager mode.
+</code></pre>
+<hr>
+
+<p><em>get_updates_for(inputs)</em></p>
+<p>Deprecated, do NOT use!</p>
+<pre><code>Retrieves updates relevant to a specific set of inputs.
+
+Arguments:
+inputs: Input tensor or list/tuple of input tensors.
+
+Returns:
+List of update ops of the layer that depend on `inputs`.
+</code></pre>
+<hr>
+
+<p><em>get_weights()</em></p>
+<p>Returns the current weights of the layer.</p>
+<pre><code>The weights of a layer represent the state of the layer. This function
+returns both trainable and non-trainable weight values associated with this
+layer as a list of Numpy arrays, which can in turn be used to load state
+into similarly parameterized layers.
+
+For example, a Dense layer returns a list of two values-- per-output
+weights and the bias value. These can be used to set the weights of another
+Dense layer:
+
+```
+&gt;&gt;&gt; a = tf.keras.layers.Dense(1,
+...   kernel_initializer=tf.constant_initializer(1.))
+&gt;&gt;&gt; a_out = a(tf.convert_to_tensor([[1., 2., 3.]]))
+&gt;&gt;&gt; a.get_weights()
+[array([[1.],
+[1.],
+[1.]], dtype=float32), array([0.], dtype=float32)]
+&gt;&gt;&gt; b = tf.keras.layers.Dense(1,
+...   kernel_initializer=tf.constant_initializer(2.))
+&gt;&gt;&gt; b_out = b(tf.convert_to_tensor([[10., 20., 30.]]))
+&gt;&gt;&gt; b.get_weights()
+[array([[2.],
+[2.],
+[2.]], dtype=float32), array([0.], dtype=float32)]
+&gt;&gt;&gt; b.set_weights(a.get_weights())
+&gt;&gt;&gt; b.get_weights()
+[array([[1.],
+[1.],
+[1.]], dtype=float32), array([0.], dtype=float32)]
+
+Returns:
+Weights values as a list of numpy arrays.
+</code></pre>
+<pre><code>
+&lt;hr&gt;
+
+*reset_state()*
+
+Resets all of the metric state variables at the start of each epoch.
+
+&lt;hr&gt;
+
+*reset_states()*
+
+Resets all of the metric state variables.
+
+    This function is called between epochs/steps,
+    when a metric is evaluated during training.
+
+&lt;hr&gt;
+
+*result()*
+
+Computes and returns the metric value tensor.
+
+    Result computation is an idempotent operation that simply calculates the
+    metric value using the state variables.
+
+&lt;hr&gt;
+
+*set_weights(weights)*
+
+Sets the weights of the layer, from Numpy arrays.
+
+    The weights of a layer represent the state of the layer. This function
+    sets the weight values from numpy arrays. The weight values should be
+    passed in the order they are created by the layer. Note that the layer's
+    weights must be instantiated before calling this function by calling
+    the layer.
+
+    For example, a Dense layer returns a list of two values-- per-output
+    weights and the bias value. These can be used to set the weights of another
+    Dense layer:
+
+    ```
+    &gt;&gt;&gt; a = tf.keras.layers.Dense(1,
+    ...   kernel_initializer=tf.constant_initializer(1.))
+    &gt;&gt;&gt; a_out = a(tf.convert_to_tensor([[1., 2., 3.]]))
+    &gt;&gt;&gt; a.get_weights()
+    [array([[1.],
+    [1.],
+    [1.]], dtype=float32), array([0.], dtype=float32)]
+    &gt;&gt;&gt; b = tf.keras.layers.Dense(1,
+    ...   kernel_initializer=tf.constant_initializer(2.))
+    &gt;&gt;&gt; b_out = b(tf.convert_to_tensor([[10., 20., 30.]]))
+    &gt;&gt;&gt; b.get_weights()
+    [array([[2.],
+    [2.],
+    [2.]], dtype=float32), array([0.], dtype=float32)]
+    &gt;&gt;&gt; b.set_weights(a.get_weights())
+    &gt;&gt;&gt; b.get_weights()
+    [array([[1.],
+    [1.],
+    [1.]], dtype=float32), array([0.], dtype=float32)]
+
+    Arguments:
+    weights: a list of Numpy arrays. The number
+    of arrays and their shape must match
+    number of the dimensions of the weights
+    of the layer (i.e. it should match the
+    output of `get_weights`).
+
+    Raises:
+    ValueError: If the provided weights list does not match the
+    layer's specifications.
+</code></pre>
+<hr>
+
+<p><em>update_state(y_true, y_pred, sample_weight=None)</em></p>
+<p>Computes accuracy for ordinal labels.</p>
+<pre><code>Args:
+y_true: Cumulatiuve logits from CondorOrdinal layer.
+y_pred: CondorOrdinal Encoded Labels.
+sample_weight (optional): Not implemented.
+</code></pre>
+<hr>
+
+<p><em>with_name_scope(method)</em></p>
+<p>Decorator to automatically enter the module name scope.</p>
+<pre><code>```
+&gt;&gt;&gt; class MyModule(tf.Module):
+...   @tf.Module.with_name_scope
+...   def __call__(self, x):
+...     if not hasattr(self, 'w'):
+...       self.w = tf.Variable(tf.random.normal([x.shape[1], 3]))
+...     return tf.matmul(x, self.w)
+
+Using the above module would produce `tf.Variable`s and `tf.Tensor`s whose
+names included the module name:
+
+&gt;&gt;&gt; mod = MyModule()
+&gt;&gt;&gt; mod(tf.ones([1, 2]))
+&lt;tf.Tensor: shape=(1, 3), dtype=float32, numpy=..., dtype=float32)&gt;
+&gt;&gt;&gt; mod.w
+&lt;tf.Variable 'my_module/Variable:0' shape=(2, 3) dtype=float32,
+numpy=..., dtype=float32)&gt;
+
+Args:
+method: The method to wrap.
+
+Returns:
+The original method wrapped such that it enters the module's name scope.
+</code></pre>
+<pre><code>
+### Properties
+
+&lt;hr&gt;
+
+*activity_regularizer*
+
+Optional regularizer function for the output of this layer.
+
+&lt;hr&gt;
+
+*compute_dtype*
+
+The dtype of the layer's computations.
+
+    This is equivalent to `Layer.dtype_policy.compute_dtype`. Unless
+    mixed precision is used, this is the same as `Layer.dtype`, the dtype of
+    the weights.
+
+    Layers automatically cast their inputs to the compute dtype, which causes
+    computations and the output to be in the compute dtype as well. This is done
+    by the base Layer class in `Layer.__call__`, so you do not have to insert
+    these casts if implementing your own layer.
+
+    Layers often perform certain internal computations in higher precision when
+    `compute_dtype` is float16 or bfloat16 for numeric stability. The output
+    will still typically be float16 or bfloat16 in such cases.
+
+    Returns:
+    The layer's compute dtype.
+
+&lt;hr&gt;
+
+*dtype*
+
+The dtype of the layer weights.
+
+    This is equivalent to `Layer.dtype_policy.variable_dtype`. Unless
+    mixed precision is used, this is the same as `Layer.compute_dtype`, the
+    dtype of the layer's computations.
+
+&lt;hr&gt;
+
+*dtype_policy*
+
+The dtype policy associated with this layer.
+
+    This is an instance of a `tf.keras.mixed_precision.Policy`.
+
+&lt;hr&gt;
+
+*dynamic*
+
+Whether the layer is dynamic (eager-only); set in the constructor.
+
+&lt;hr&gt;
+
+*inbound_nodes*
+
+Deprecated, do NOT use! Only for compatibility with external Keras.
+
+&lt;hr&gt;
+
+*input*
+
+Retrieves the input tensor(s) of a layer.
+
+    Only applicable if the layer has exactly one input,
+    i.e. if it is connected to one incoming layer.
+
+    Returns:
+    Input tensor or list of input tensors.
+
+    Raises:
+    RuntimeError: If called in Eager mode.
+    AttributeError: If no inbound nodes are found.
+
+&lt;hr&gt;
+
+*input_mask*
+
+Retrieves the input mask tensor(s) of a layer.
+
+    Only applicable if the layer has exactly one inbound node,
+    i.e. if it is connected to one incoming layer.
+
+    Returns:
+    Input mask tensor (potentially None) or list of input
+    mask tensors.
+
+    Raises:
+    AttributeError: if the layer is connected to
+    more than one incoming layers.
+
+&lt;hr&gt;
+
+*input_shape*
+
+Retrieves the input shape(s) of a layer.
+
+    Only applicable if the layer has exactly one input,
+    i.e. if it is connected to one incoming layer, or if all inputs
+    have the same shape.
+
+    Returns:
+    Input shape, as an integer shape tuple
+    (or list of shape tuples, one tuple per input tensor).
+
+    Raises:
+    AttributeError: if the layer has no defined input_shape.
+    RuntimeError: if called in Eager mode.
+
+&lt;hr&gt;
+
+*input_spec*
+
+`InputSpec` instance(s) describing the input format for this layer.
+
+    When you create a layer subclass, you can set `self.input_spec` to enable
+    the layer to run input compatibility checks when it is called.
+    Consider a `Conv2D` layer: it can only be called on a single input tensor
+    of rank 4. As such, you can set, in `__init__()`:
+
+    ```python
+    self.input_spec = tf.keras.layers.InputSpec(ndim=4)
+    ```
+
+    Now, if you try to call the layer on an input that isn't rank 4
+    (for instance, an input of shape `(2,)`, it will raise a nicely-formatted
+    error:
+
+    ```
+    ValueError: Input 0 of layer conv2d is incompatible with the layer:
+    expected ndim=4, found ndim=1. Full shape received: [2]
+    ```
+
+    Input checks that can be specified via `input_spec` include:
+    - Structure (e.g. a single input, a list of 2 inputs, etc)
+    - Shape
+    - Rank (ndim)
+    - Dtype
+
+    For more information, see `tf.keras.layers.InputSpec`.
+
+    Returns:
+    A `tf.keras.layers.InputSpec` instance, or nested structure thereof.
+
+&lt;hr&gt;
+
+*losses*
+
+List of losses added using the `add_loss()` API.
+
+    Variable regularization tensors are created when this property is accessed,
+    so it is eager safe: accessing `losses` under a `tf.GradientTape` will
+    propagate gradients back to the corresponding variables.
+
+    Examples:
+
+    ```
+    &gt;&gt;&gt; class MyLayer(tf.keras.layers.Layer):
+    ...   def call(self, inputs):
+    ...     self.add_loss(tf.abs(tf.reduce_mean(inputs)))
+    ...     return inputs
+    &gt;&gt;&gt; l = MyLayer()
+    &gt;&gt;&gt; l(np.ones((10, 1)))
+    &gt;&gt;&gt; l.losses
+    [1.0]
+
+    &gt;&gt;&gt; inputs = tf.keras.Input(shape=(10,))
+    &gt;&gt;&gt; x = tf.keras.layers.Dense(10)(inputs)
+    &gt;&gt;&gt; outputs = tf.keras.layers.Dense(1)(x)
+    &gt;&gt;&gt; model = tf.keras.Model(inputs, outputs)
+    &gt;&gt;&gt; # Activity regularization.
+    &gt;&gt;&gt; len(model.losses)
+    0
+    &gt;&gt;&gt; model.add_loss(tf.abs(tf.reduce_mean(x)))
+    &gt;&gt;&gt; len(model.losses)
+    1
+
+    &gt;&gt;&gt; inputs = tf.keras.Input(shape=(10,))
+    &gt;&gt;&gt; d = tf.keras.layers.Dense(10, kernel_initializer='ones')
+    &gt;&gt;&gt; x = d(inputs)
+    &gt;&gt;&gt; outputs = tf.keras.layers.Dense(1)(x)
+    &gt;&gt;&gt; model = tf.keras.Model(inputs, outputs)
+    &gt;&gt;&gt; # Weight regularization.
+    &gt;&gt;&gt; model.add_loss(lambda: tf.reduce_mean(d.kernel))
+    &gt;&gt;&gt; model.losses
+    [&lt;tf.Tensor: shape=(), dtype=float32, numpy=1.0&gt;]
+
+    Returns:
+    A list of tensors.
+</code></pre>
+<hr>
+
+<p><em>metrics</em></p>
+<p>List of metrics added using the <code>add_metric()</code> API.</p>
+<pre><code>Example:
+
+```
+&gt;&gt;&gt; input = tf.keras.layers.Input(shape=(3,))
+&gt;&gt;&gt; d = tf.keras.layers.Dense(2)
+&gt;&gt;&gt; output = d(input)
+&gt;&gt;&gt; d.add_metric(tf.reduce_max(output), name='max')
+&gt;&gt;&gt; d.add_metric(tf.reduce_min(output), name='min')
+&gt;&gt;&gt; [m.name for m in d.metrics]
+['max', 'min']
+
+Returns:
+A list of `Metric` objects.
+</code></pre>
+<pre><code>
+&lt;hr&gt;
+
+*name*
+
+Name of the layer (string), set in the constructor.
+
+&lt;hr&gt;
+
+*name_scope*
+
+Returns a `tf.name_scope` instance for this class.
+
+&lt;hr&gt;
+
+*non_trainable_variables*
+
+None
+
+&lt;hr&gt;
+
+*non_trainable_weights*
+
+List of all non-trainable weights tracked by this layer.
+
+    Non-trainable weights are *not* updated during training. They are expected
+    to be updated manually in `call()`.
+
+    Note: This will not track the weights of nested `tf.Modules` that are not
+    themselves Keras layers.
+
+    Returns:
+    A list of non-trainable variables.
+
+&lt;hr&gt;
+
+*outbound_nodes*
+
+Deprecated, do NOT use! Only for compatibility with external Keras.
+
+&lt;hr&gt;
+
+*output*
+
+Retrieves the output tensor(s) of a layer.
+
+    Only applicable if the layer has exactly one output,
+    i.e. if it is connected to one incoming layer.
+
+    Returns:
+    Output tensor or list of output tensors.
+
+    Raises:
+    AttributeError: if the layer is connected to more than one incoming
+    layers.
+    RuntimeError: if called in Eager mode.
+
+&lt;hr&gt;
+
+*output_mask*
+
+Retrieves the output mask tensor(s) of a layer.
+
+    Only applicable if the layer has exactly one inbound node,
+    i.e. if it is connected to one incoming layer.
+
+    Returns:
+    Output mask tensor (potentially None) or list of output
+    mask tensors.
+
+    Raises:
+    AttributeError: if the layer is connected to
+    more than one incoming layers.
+
+&lt;hr&gt;
+
+*output_shape*
+
+Retrieves the output shape(s) of a layer.
+
+    Only applicable if the layer has one output,
+    or if all outputs have the same shape.
+
+    Returns:
+    Output shape, as an integer shape tuple
+    (or list of shape tuples, one tuple per output tensor).
+
+    Raises:
+    AttributeError: if the layer has no defined output shape.
+    RuntimeError: if called in Eager mode.
+
+&lt;hr&gt;
+
+*stateful*
+
+None
+
+&lt;hr&gt;
+
+*submodules*
+
+Sequence of all sub-modules.
+
+    Submodules are modules which are properties of this module, or found as
+    properties of modules which are properties of this module (and so on).
+
+    ```
+    &gt;&gt;&gt; a = tf.Module()
+    &gt;&gt;&gt; b = tf.Module()
+    &gt;&gt;&gt; c = tf.Module()
+    &gt;&gt;&gt; a.b = b
+    &gt;&gt;&gt; b.c = c
+    &gt;&gt;&gt; list(a.submodules) == [b, c]
+    True
+    &gt;&gt;&gt; list(b.submodules) == [c]
+    True
+    &gt;&gt;&gt; list(c.submodules) == []
+    True
+
+    Returns:
+    A sequence of all submodules.
+</code></pre>
+<hr>
+
+<p><em>supports_masking</em></p>
+<p>Whether this layer supports computing a mask using <code>compute_mask</code>.</p>
+<hr>
+
+<p><em>trainable</em></p>
+<p>None</p>
+<hr>
+
+<p><em>trainable_variables</em></p>
+<p>Sequence of trainable variables owned by this module and its submodules.</p>
+<pre><code>Note: this method uses reflection to find variables on the current instance
+and submodules. For performance reasons you may wish to cache the result
+of calling this method if you don't expect the return value to change.
+
+Returns:
+A sequence of variables for the current module (sorted by attribute
+name) followed by variables from all submodules recursively (breadth
+first).
+</code></pre>
+<hr>
+
+<p><em>trainable_weights</em></p>
+<p>List of all trainable weights tracked by this layer.</p>
+<pre><code>Trainable weights are updated via gradient descent during training.
+
+Note: This will not track the weights of nested `tf.Modules` that are not
+themselves Keras layers.
+
+Returns:
+A list of trainable variables.
+</code></pre>
+<hr>
+
+<p><em>updates</em></p>
+<p>None</p>
+<hr>
+
+<p><em>variable_dtype</em></p>
+<p>Alias of <code>Layer.dtype</code>, the dtype of the weights.</p>
+<hr>
+
+<p><em>variables</em></p>
+<p>Returns the list of all layer variables/weights.</p>
+<pre><code>Alias of `self.weights`.
+
+Note: This will not track the weights of nested `tf.Modules` that are not
+themselves Keras layers.
+
+Returns:
+A list of variables.
+</code></pre>
+<hr>
+
+<p><em>weights</em></p>
+<p>Returns the list of all layer variables/weights.</p>
+<pre><code>Note: This will not track the weights of nested `tf.Modules` that are not
+themselves Keras layers.
+
+Returns:
+A list of variables.
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../OrdinalAccuracy/" class="btn btn-neutral" title="condor_tensorflow.metrics.OrdinalAccuracy"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2021 <a href="http://github.com/GarrettJenkinson">Garrett Jenkinson</a></p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/GarrettJenkinson/condor_tensorflow/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../OrdinalAccuracy/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" defer></script>
+      <script src="../../../mathjaxhelper.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

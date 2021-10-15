@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Garrett Jenkinson">
+  <link rel="canonical" href="http://GarrettJenkinson.github.io/condor_tensorflow/api_subpackages/condor_tensorflow.labelencoder/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>condor_tensorflow.labelencoder - condor_tensorflow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "condor_tensorflow.labelencoder";
+    var mkdocs_page_input_path = "api_subpackages/condor_tensorflow.labelencoder.md";
+    var mkdocs_page_url = "/condor_tensorflow/api_subpackages/condor_tensorflow.labelencoder/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> condor_tensorflow</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorials</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tutorials/amazon/">Amazon Reveiews</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tutorials/mnist/">MNIST</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tutorials/poker/">Poker Hands</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG/">Changelog</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../citing/">Citing</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../license/">License</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../condor_tensorflow.loss/">condor_tensorflow.loss</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../condor_tensorflow.metrics/">condor_tensorflow.metrics</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../condor_tensorflow.activations/">condor_tensorflow.activations</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">condor_tensorflow.labelencoder</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/BaseEstimator/">condor_tensorflow.labelencoder.BaseEstimator</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/CondorOrdinalEncoder/">condor_tensorflow.labelencoder.CondorOrdinalEncoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/OrdinalEncoder/">condor_tensorflow.labelencoder.OrdinalEncoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.labelencoder/TransformerMixin/">condor_tensorflow.labelencoder.TransformerMixin</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/CondorOrdinalCrossEntropy/">condor_tensorflow.loss.CondorOrdinalCrossEntropy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/SparseCondorOrdinalCrossEntropy/">condor_tensorflow.loss.SparseCondorOrdinalCrossEntropy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/OrdinalEarthMoversDistance/">condor_tensorflow.loss.OrdinalEarthMoversDistance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.loss/SparseOrdinalEarthMoversDistance/">condor_tensorflow.loss.SparseOrdinalEarthMoversDistance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/OrdinalMeanAbsoluteError/">condor_tensorflow.metrics.OrdinalMeanAbsoluteError</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/SparseOrdinalMeanAbsoluteError/">condor_tensorflow.metrics.SparseOrdinalMeanAbsoluteError</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/OrdinalAccuracy/">condor_tensorflow.metrics.OrdinalAccuracy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api_modules/condor_tensorflow.metrics/SparseOrdinalAccuracy/">condor_tensorflow.metrics.SparseOrdinalAccuracy</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">condor_tensorflow</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API &raquo;</li>
+        
+      
+    
+    <li>condor_tensorflow.labelencoder</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/GarrettJenkinson/condor_tensorflow/edit/master/docs/api_subpackages/condor_tensorflow.labelencoder.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <p>condor_tensorflow version: 0.1.0-dev</p>
+<h2 id="transformermixin">TransformerMixin</h2>
+<p><em>TransformerMixin()</em></p>
+<p>Mixin class for all transformers in scikit-learn.</p>
+<h3 id="methods">Methods</h3>
+<hr>
+
+<p><em>fit_transform(X, y=None, </em><em>fit_params)</em></p>
+<p>Fit to data, then transform it.</p>
+<pre><code>Fits transformer to `X` and `y` with optional parameters `fit_params`
+and returns a transformed version of `X`.
+</code></pre>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>X</code> : array-like of shape (n_samples, n_features)</p>
+<p>Input samples.</p>
+</li>
+<li>
+<p><code>y</code> :  array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</p>
+<p>Target values (None for unsupervised transformations).</p>
+</li>
+<li>
+<p><code>**fit_params</code> : dict</p>
+<p>Additional fit parameters.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>X_new</code> : ndarray array of shape (n_samples, n_features_new)</p>
+<p>Transformed array.</p>
+</li>
+</ul>
+<h3 id="properties">Properties</h3>
+<h2 id="ordinalencoder">OrdinalEncoder</h2>
+<p><em>OrdinalEncoder(</em>, categories='auto', dtype=<class 'numpy.float64'>, handle_unknown='error', unknown_value=None)*</p>
+<p>Encode categorical features as an integer array.</p>
+<pre><code>The input to this transformer should be an array-like of integers or
+strings, denoting the values taken on by categorical (discrete) features.
+The features are converted to ordinal integers. This results in
+a single column of integers (0 to n_categories - 1) per feature.
+
+Read more in the :ref:`User Guide &lt;preprocessing_categorical_features&gt;`.
+
+.. versionadded:: 0.20
+</code></pre>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>categories</code> : 'auto' or a list of array-like, default='auto'</p>
+<p>Categories (unique values) per feature:</p>
+</li>
+<li>
+<p><code>- 'auto'</code> : Determine categories automatically from the training data.</p>
+</li>
+<li>
+<p><code>- list</code> : <code>categories[i]</code> holds the categories expected in the ith</p>
+<p>column. The passed categories should not mix strings and numeric
+values, and should be sorted in case of numeric values.</p>
+<p>The used categories can be found in the <code>categories_</code> attribute.</p>
+</li>
+<li>
+<p><code>dtype</code> : number type, default np.float64</p>
+<p>Desired dtype of output.</p>
+</li>
+<li>
+<p><code>handle_unknown</code> : {'error', 'use_encoded_value'}, default='error'</p>
+<p>When set to 'error' an error will be raised in case an unknown
+categorical feature is present during transform. When set to
+'use_encoded_value', the encoded value of unknown categories will be
+set to the value given for the parameter <code>unknown_value</code>. In
+:meth:<code>inverse_transform</code>, an unknown category will be denoted as None.</p>
+<p>.. versionadded:: 0.24</p>
+</li>
+<li>
+<p><code>unknown_value</code> : int or np.nan, default=None</p>
+<p>When the parameter handle_unknown is set to 'use_encoded_value', this
+parameter is required and will set the encoded value of unknown
+categories. It has to be distinct from the values used to encode any of
+the categories in <code>fit</code>. If set to np.nan, the <code>dtype</code> parameter must
+be a float dtype.</p>
+<p>.. versionadded:: 0.24</p>
+</li>
+</ul>
+<p><strong>Attributes</strong></p>
+<ul>
+<li>
+<p><code>categories_</code> : list of arrays</p>
+<p>The categories of each feature determined during <code>fit</code> (in order of
+the features in X and corresponding with the output of <code>transform</code>).
+This does not include categories that weren't seen during <code>fit</code>.</p>
+</li>
+</ul>
+<p><strong>See Also</strong></p>
+<ul>
+<li>
+<p><code>OneHotEncoder</code> : Performs a one-hot encoding of categorical features.</p>
+</li>
+<li>
+<p><code>LabelEncoder</code> : Encodes target labels with values between 0 and</p>
+<p><code>n_classes-1</code>.</p>
+</li>
+</ul>
+<p><strong>Examples</strong></p>
+<p>Given a dataset with two features, we let the encoder find the unique
+    values per feature and transform the data to an ordinal encoding.</p>
+<pre><code>```
+&gt;&gt;&gt; from sklearn.preprocessing import OrdinalEncoder
+&gt;&gt;&gt; enc = OrdinalEncoder()
+&gt;&gt;&gt; X = [['Male', 1], ['Female', 3], ['Female', 2]]
+&gt;&gt;&gt; enc.fit(X)
+OrdinalEncoder()
+&gt;&gt;&gt; enc.categories_
+[array(['Female', 'Male'], dtype=object), array([1, 2, 3], dtype=object)]
+&gt;&gt;&gt; enc.transform([['Female', 3], ['Male', 1]])
+array([[0., 2.],
+[1., 0.]])
+
+&gt;&gt;&gt; enc.inverse_transform([[1, 0], [0, 1]])
+array([['Male', 1],
+['Female', 2]], dtype=object)
+</code></pre>
+<p>```</p>
+<h3 id="methods_1">Methods</h3>
+<hr>
+
+<p><em>fit(X, y=None)</em></p>
+<p>Fit the OrdinalEncoder to X.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>X</code> : array-like of shape (n_samples, n_features)</p>
+<p>The data to determine the categories of each feature.</p>
+</li>
+<li>
+<p><code>y</code> : None</p>
+<p>Ignored. This parameter exists only for compatibility with
+:class:<code>~sklearn.pipeline.Pipeline</code>.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>self</p>
+<hr>
+
+<p><em>fit_transform(X, y=None, </em><em>fit_params)</em></p>
+<p>Fit to data, then transform it.</p>
+<pre><code>Fits transformer to `X` and `y` with optional parameters `fit_params`
+and returns a transformed version of `X`.
+</code></pre>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>X</code> : array-like of shape (n_samples, n_features)</p>
+<p>Input samples.</p>
+</li>
+<li>
+<p><code>y</code> :  array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</p>
+<p>Target values (None for unsupervised transformations).</p>
+</li>
+<li>
+<p><code>**fit_params</code> : dict</p>
+<p>Additional fit parameters.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>X_new</code> : ndarray array of shape (n_samples, n_features_new)</p>
+<p>Transformed array.</p>
+</li>
+</ul>
+<hr>
+
+<p><em>get_params(deep=True)</em></p>
+<p>Get parameters for this estimator.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>deep</code> : bool, default=True</p>
+<p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>params</code> : dict</p>
+<p>Parameter names mapped to their values.</p>
+</li>
+</ul>
+<hr>
+
+<p><em>inverse_transform(X)</em></p>
+<p>Convert the data back to the original representation.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>X</code> : {array-like, sparse matrix} of shape (n_samples, n_features)</p>
+<p>The transformed data.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>X_tr</code> : ndarray of shape (n_samples, n_features)</p>
+<p>Inverse transformed array.</p>
+</li>
+</ul>
+<hr>
+
+<p><em>set_params(</em><em>params)</em></p>
+<p>Set the parameters of this estimator.</p>
+<pre><code>The method works on simple estimators as well as on nested objects
+(such as :class:`~sklearn.pipeline.Pipeline`). The latter have
+parameters of the form ``&lt;component&gt;__&lt;parameter&gt;`` so that it's
+possible to update each component of a nested object.
+</code></pre>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>**params</code> : dict</p>
+<p>Estimator parameters.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>self</code> : estimator instance</p>
+<p>Estimator instance.</p>
+</li>
+</ul>
+<hr>
+
+<p><em>transform(X)</em></p>
+<p>Transform X to ordinal codes.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>X</code> : array-like of shape (n_samples, n_features)</p>
+<p>The data to encode.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>X_out</code> : ndarray of shape (n_samples, n_features)</p>
+<p>Transformed input.</p>
+</li>
+</ul>
+<h3 id="properties_1">Properties</h3>
+<h2 id="baseestimator">BaseEstimator</h2>
+<p><em>BaseEstimator()</em></p>
+<p>Base class for all estimators in scikit-learn.</p>
+<p><strong>Notes</strong></p>
+<p>All estimators should specify all the parameters that can be set
+    at the class level in their <code>__init__</code> as explicit keyword
+arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
+<h3 id="methods_2">Methods</h3>
+<hr>
+
+<p><em>get_params(deep=True)</em></p>
+<p>Get parameters for this estimator.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>deep</code> : bool, default=True</p>
+<p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>params</code> : dict</p>
+<p>Parameter names mapped to their values.</p>
+</li>
+</ul>
+<hr>
+
+<p><em>set_params(</em><em>params)</em></p>
+<p>Set the parameters of this estimator.</p>
+<pre><code>The method works on simple estimators as well as on nested objects
+(such as :class:`~sklearn.pipeline.Pipeline`). The latter have
+parameters of the form ``&lt;component&gt;__&lt;parameter&gt;`` so that it's
+possible to update each component of a nested object.
+</code></pre>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>**params</code> : dict</p>
+<p>Estimator parameters.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>self</code> : estimator instance</p>
+<p>Estimator instance.</p>
+</li>
+</ul>
+<h3 id="properties_2">Properties</h3>
+<h2 id="condorordinalencoder">CondorOrdinalEncoder</h2>
+<p><em>CondorOrdinalEncoder(nclasses=0, dtype=<class 'numpy.int32'>, </em><em>kwargs)</em></p>
+<p>Base class for all estimators in scikit-learn.</p>
+<p><strong>Notes</strong></p>
+<p>All estimators should specify all the parameters that can be set
+    at the class level in their <code>__init__</code> as explicit keyword
+arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
+<h3 id="methods_3">Methods</h3>
+<hr>
+
+<p><em>fit(X, y=None)</em></p>
+<p>Fit the CondorOrdinalEncoder to X.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>X</code> : array-like of shape (n_samples, n_features)</p>
+<p>The data to determine the categories of each feature.</p>
+</li>
+<li>
+<p><code>y</code> : None</p>
+<p>Ignored. This parameter exists only for compatibility with
+:class:<code>~sklearn.pipeline.Pipeline</code>.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>self</p>
+<hr>
+
+<p><em>fit_transform(X, y=None, </em><em>fit_params)</em></p>
+<p>Fit to data, then transform it.</p>
+<pre><code>Fits transformer to `X` and `y` with optional parameters `fit_params`
+and returns a transformed version of `X`.
+</code></pre>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>X</code> : array-like of shape (n_samples, n_features)</p>
+<p>Input samples.</p>
+</li>
+<li>
+<p><code>y</code> :  array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</p>
+<p>Target values (None for unsupervised transformations).</p>
+</li>
+<li>
+<p><code>**fit_params</code> : dict</p>
+<p>Additional fit parameters.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>X_new</code> : ndarray array of shape (n_samples, n_features_new)</p>
+<p>Transformed array.</p>
+</li>
+</ul>
+<hr>
+
+<p><em>get_params(deep=True)</em></p>
+<p>Get parameters for this estimator.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>deep</code> : bool, default=True</p>
+<p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>params</code> : dict</p>
+<p>Parameter names mapped to their values.</p>
+</li>
+</ul>
+<hr>
+
+<p><em>set_params(</em><em>params)</em></p>
+<p>Set the parameters of this estimator.</p>
+<pre><code>The method works on simple estimators as well as on nested objects
+(such as :class:`~sklearn.pipeline.Pipeline`). The latter have
+parameters of the form ``&lt;component&gt;__&lt;parameter&gt;`` so that it's
+possible to update each component of a nested object.
+</code></pre>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>**params</code> : dict</p>
+<p>Estimator parameters.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>self</code> : estimator instance</p>
+<p>Estimator instance.</p>
+</li>
+</ul>
+<hr>
+
+<p><em>transform(X)</em></p>
+<p>Transform X to ordinal arrays.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><code>X</code> : array-like of shape (n_samples, 1)</p>
+<p>The labels data to encode.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>
+<p><code>X_out</code> : ndarray of shape (n_samples, n_classes-1)</p>
+<p>Transformed input.</p>
+</li>
+</ul>
+<h3 id="properties_3">Properties</h3>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../api_modules/condor_tensorflow.labelencoder/BaseEstimator/" class="btn btn-neutral float-right" title="condor_tensorflow.labelencoder.BaseEstimator">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../condor_tensorflow.activations/" class="btn btn-neutral" title="condor_tensorflow.activations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2021 <a href="http://github.com/GarrettJenkinson">Garrett Jenkinson</a></p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/GarrettJenkinson/condor_tensorflow/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../condor_tensorflow.activations/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../api_modules/condor_tensorflow.labelencoder/BaseEstimator/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" defer></script>
+      <script src="../../mathjaxhelper.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

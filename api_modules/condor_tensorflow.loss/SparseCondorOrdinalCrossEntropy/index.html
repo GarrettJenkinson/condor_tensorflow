@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Garrett Jenkinson">
+  <link rel="canonical" href="http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.loss/SparseCondorOrdinalCrossEntropy/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>condor_tensorflow.loss.SparseCondorOrdinalCrossEntropy - condor_tensorflow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../../extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "condor_tensorflow.loss.SparseCondorOrdinalCrossEntropy";
+    var mkdocs_page_input_path = "api_modules/condor_tensorflow.loss/SparseCondorOrdinalCrossEntropy.md";
+    var mkdocs_page_url = "/condor_tensorflow/api_modules/condor_tensorflow.loss/SparseCondorOrdinalCrossEntropy/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> condor_tensorflow</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorials</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/amazon/">Amazon Reveiews</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/mnist/">MNIST</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/poker/">Poker Hands</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../installation/">Installation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG/">Changelog</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../citing/">Citing</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../license/">License</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api_subpackages/condor_tensorflow.loss/">condor_tensorflow.loss</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api_subpackages/condor_tensorflow.metrics/">condor_tensorflow.metrics</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api_subpackages/condor_tensorflow.activations/">condor_tensorflow.activations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api_subpackages/condor_tensorflow.labelencoder/">condor_tensorflow.labelencoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.labelencoder/BaseEstimator/">condor_tensorflow.labelencoder.BaseEstimator</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.labelencoder/CondorOrdinalEncoder/">condor_tensorflow.labelencoder.CondorOrdinalEncoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.labelencoder/OrdinalEncoder/">condor_tensorflow.labelencoder.OrdinalEncoder</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.labelencoder/TransformerMixin/">condor_tensorflow.labelencoder.TransformerMixin</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CondorOrdinalCrossEntropy/">condor_tensorflow.loss.CondorOrdinalCrossEntropy</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">condor_tensorflow.loss.SparseCondorOrdinalCrossEntropy</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../OrdinalEarthMoversDistance/">condor_tensorflow.loss.OrdinalEarthMoversDistance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../SparseOrdinalEarthMoversDistance/">condor_tensorflow.loss.SparseOrdinalEarthMoversDistance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.metrics/OrdinalMeanAbsoluteError/">condor_tensorflow.metrics.OrdinalMeanAbsoluteError</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.metrics/SparseOrdinalMeanAbsoluteError/">condor_tensorflow.metrics.SparseOrdinalMeanAbsoluteError</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.metrics/OrdinalAccuracy/">condor_tensorflow.metrics.OrdinalAccuracy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../condor_tensorflow.metrics/SparseOrdinalAccuracy/">condor_tensorflow.metrics.SparseOrdinalAccuracy</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">condor_tensorflow</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API &raquo;</li>
+        
+      
+    
+    <li>condor_tensorflow.loss.SparseCondorOrdinalCrossEntropy</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/GarrettJenkinson/condor_tensorflow/edit/master/docs/api_modules/condor_tensorflow.loss/SparseCondorOrdinalCrossEntropy.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="sparsecondorordinalcrossentropy">SparseCondorOrdinalCrossEntropy</h2>
+<p><em>SparseCondorOrdinalCrossEntropy(importance_weights=None, from_type='ordinal_logits', name='ordinal_crossent', </em><em>kwargs)</em></p>
+<p>Loss base class.</p>
+<pre><code>To be implemented by subclasses:
+* `call()`: Contains the logic for loss calculation using `y_true`, `y_pred`.
+
+Example subclass implementation:
+
+```python
+class MeanSquaredError(Loss):
+
+def call(self, y_true, y_pred):
+y_pred = tf.convert_to_tensor_v2(y_pred)
+y_true = tf.cast(y_true, y_pred.dtype)
+return tf.reduce_mean(math_ops.square(y_pred - y_true), axis=-1)
+```
+
+When used with `tf.distribute.Strategy`, outside of built-in training loops
+such as `tf.keras` `compile` and `fit`, please use 'SUM' or 'NONE' reduction
+types, and reduce losses explicitly in your training loop. Using 'AUTO' or
+'SUM_OVER_BATCH_SIZE' will raise an error.
+
+Please see this custom training [tutorial](
+https://www.tensorflow.org/tutorials/distribute/custom_training) for more
+details on this.
+
+You can implement 'SUM_OVER_BATCH_SIZE' using global batch size like:
+```python
+with strategy.scope():
+loss_obj = tf.keras.losses.CategoricalCrossentropy(
+reduction=tf.keras.losses.Reduction.NONE)
+....
+loss = (tf.reduce_sum(loss_obj(labels, predictions)) *
+(1. / global_batch_size))
+```
+</code></pre>
+<h3 id="methods">Methods</h3>
+<hr>
+
+<p><em>call(y_true, y_pred)</em></p>
+<p>Invokes the <code>Loss</code> instance.</p>
+<pre><code>Args:
+y_true: Ground truth values. shape = `[batch_size, d0, .. dN]`, except
+sparse loss functions such as sparse categorical crossentropy where
+shape = `[batch_size, d0, .. dN-1]`
+y_pred: The predicted values. shape = `[batch_size, d0, .. dN]`
+
+Returns:
+Loss values with the shape `[batch_size, d0, .. dN-1]`.
+</code></pre>
+<hr>
+
+<p><em>from_config(config)</em></p>
+<p>Instantiates a <code>Loss</code> from its config (output of <code>get_config()</code>).</p>
+<pre><code>Args:
+config: Output of `get_config()`.
+
+Returns:
+A `Loss` instance.
+</code></pre>
+<hr>
+
+<p><em>get_config()</em></p>
+<p>Returns the config dictionary for a <code>Loss</code> instance.</p>
+<hr>
+
+<p><em>label_to_levels(label)</em></p>
+<p>None</p>
+<hr>
+
+<p><em>ordinal_loss(logits, levels, importance)</em></p>
+<p>Cross-entropy loss function designed for ordinal outcomes.</p>
+<p><strong>Parameters</strong></p>
+<p>logits: tf.Tensor, shape=(num_samples,num_classes-1)
+    Logit output of the final Dense(num_classes-1) layer.</p>
+<pre><code>levels: tf.Tensor, shape=(num_samples, num_classes-1)
+Encoded lables provided by CondorOrdinalEncoder.
+
+importance_weights: tf or np array of floats, shape(numclasses-1,)
+Importance weights for each binary classification task.
+</code></pre>
+<p><strong>Returns</strong></p>
+<p>loss: tf.Tensor, shape=(num_samples,)
+    Loss vector, note that tensorflow will reduce it to a single number
+    automatically.</p>
+<h3 id="properties">Properties</h3>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../OrdinalEarthMoversDistance/" class="btn btn-neutral float-right" title="condor_tensorflow.loss.OrdinalEarthMoversDistance">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../CondorOrdinalCrossEntropy/" class="btn btn-neutral" title="condor_tensorflow.loss.CondorOrdinalCrossEntropy"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2021 <a href="http://github.com/GarrettJenkinson">Garrett Jenkinson</a></p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/GarrettJenkinson/condor_tensorflow/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../CondorOrdinalCrossEntropy/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../OrdinalEarthMoversDistance/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" defer></script>
+      <script src="../../../mathjaxhelper.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
