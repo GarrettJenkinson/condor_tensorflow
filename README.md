@@ -96,4 +96,4 @@ Please post any issues to the [issue queue](https://github.com/GarrettJenkinson/
 
 ## References
 
-Jenkinson, Khezeli, Oliver, Kalantari, Klee. Universally rank consistent ordinal regression in neural networks, TBD, 2022.
+[Jenkinson, Khezeli, Oliver, Kalantari, Klee. Universally rank consistent ordinal regression in neural networks, arXiv:2110.07470, 2021.](https://arxiv.org/abs/2110.07470)
