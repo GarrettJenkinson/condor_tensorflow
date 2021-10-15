@@ -30,7 +30,6 @@ nav:
     - Tutorials:
       - Amazon Reveiews: tutorials/amazon.md  
       - MNIST: tutorials/mnist.md
-      - Poker Hands: tutorials/poker.md
     - Installation: installation.md
     - Changelog: CHANGELOG.md
     - Citing: citing.md

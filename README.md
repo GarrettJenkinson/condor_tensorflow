@@ -10,6 +10,7 @@ Garrett Jenkinson et al (2021).
 
 CONDOR is compatible with any state-of-the-art deep neural network architecture, 
 requiring only modification of the output layer, the labels, and the loss function.
+[Read our full documentation to learn more.](https://garrettjenkinson.github.io/condor_tensorflow/)
 
 We also have implemented [CONDOR for pytorch](https://github.com/GarrettJenkinson/condor_pytorch).
 
