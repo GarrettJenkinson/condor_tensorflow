@@ -2,117 +2,117 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/CHANGELOG/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/citing/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/installation/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/license/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.labelencoder/BaseEstimator/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.labelencoder/CondorOrdinalEncoder/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.labelencoder/OrdinalEncoder/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.labelencoder/TransformerMixin/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.loss/CondorOrdinalCrossEntropy/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.loss/OrdinalEarthMoversDistance/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.loss/SparseCondorOrdinalCrossEntropy/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.loss/SparseOrdinalEarthMoversDistance/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.metrics/OrdinalAccuracy/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.metrics/OrdinalMeanAbsoluteError/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.metrics/SparseOrdinalAccuracy/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_modules/condor_tensorflow.metrics/SparseOrdinalMeanAbsoluteError/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_subpackages/condor_tensorflow.activations/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_subpackages/condor_tensorflow.labelencoder/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_subpackages/condor_tensorflow.loss/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/api_subpackages/condor_tensorflow.metrics/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/tutorials/amazon/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://GarrettJenkinson.github.io/condor_tensorflow/tutorials/mnist/</loc>
-         <lastmod>2021-10-15</lastmod>
+         <lastmod>2021-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
