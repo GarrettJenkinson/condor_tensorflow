@@ -18,6 +18,11 @@ You can install the latest stable release of `condor_tensorflow` directly from P
 pip install condor-tensorflow
 ```
 
+The dependencies can be pip installed also using the included `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Latest GitHub Source Code
 
