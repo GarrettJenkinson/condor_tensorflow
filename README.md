@@ -41,7 +41,13 @@ Alternatively install the most recent code on GitHub via pip:
 pip install git+https://github.com/GarrettJenkinson/condor_tensorflow/
 ```
 
-`condor_tensorflow` should now be available for use as a Python library.
+`condor_tensorflow` should now be available for use as a Python library. 
+The dependencies can be pip installed also using the included `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
+
 
 ## Docker container
 
