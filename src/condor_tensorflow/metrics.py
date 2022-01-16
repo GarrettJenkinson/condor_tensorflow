@@ -45,7 +45,7 @@ class OrdinalMeanAbsoluteError(tf.keras.metrics.Metric):
 
         if sample_weight is not None:
             values = tf.abs(y_true - labels_v2)
-            sample_weight = tf.cast(sample_weight, y_pred.dtype)
+            sample_weight = tf.cast(tf.squeeze(sample_weight), y_pred.dtype)
             sample_weight = tf.broadcast_to(sample_weight, values.shape)
             values = tf.multiply(values, sample_weight)
             self.maes.assign_add(tf.reduce_sum(values))
@@ -109,7 +109,7 @@ class SparseOrdinalMeanAbsoluteError(OrdinalMeanAbsoluteError):
 
         if sample_weight is not None:
             values = tf.abs(y_true - labels_v2)
-            sample_weight = tf.cast(sample_weight, y_pred.dtype)
+            sample_weight = tf.cast(tf.squeeze(sample_weight), y_pred.dtype)
             sample_weight = tf.broadcast_to(sample_weight, values.shape)
             values = tf.multiply(values, sample_weight)
             self.maes.assign_add(tf.reduce_sum(values))
@@ -169,7 +169,7 @@ class OrdinalAccuracy(tf.keras.metrics.Metric):
             values = tf.cast(tf.less_equal(
                 tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
                 y_pred.dtype)
-            sample_weight = tf.cast(sample_weight, y_pred.dtype)
+            sample_weight = tf.cast(tf.squeeze(sample_weight), y_pred.dtype)
             sample_weight = tf.broadcast_to(sample_weight, values.shape)
             values = tf.multiply(values, sample_weight)
             self.accs.assign_add(tf.reduce_sum(values))
@@ -233,7 +233,7 @@ class SparseOrdinalAccuracy(OrdinalAccuracy):
             values = tf.cast(tf.less_equal(
                 tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
                 y_pred.dtype)
-            sample_weight = tf.cast(sample_weight, y_pred.dtype)
+            sample_weight = tf.cast(tf.squeeze(sample_weight), y_pred.dtype)
             sample_weight = tf.broadcast_to(sample_weight, values.shape)
             values = tf.multiply(values, sample_weight)
             self.accs.assign_add(tf.reduce_sum(values))
