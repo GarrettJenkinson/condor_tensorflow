@@ -21,8 +21,6 @@ class OrdinalMeanAbsoluteError(tf.keras.metrics.Metric):
           sample_weight (optional): Not implemented.
         """
 
-        if sample_weight:
-            raise NotImplementedError
 
         # Predict the label as in Cao et al. - using cumulative probabilities
         cum_probs = tf.math.cumprod(
@@ -45,8 +43,16 @@ class OrdinalMeanAbsoluteError(tf.keras.metrics.Metric):
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
         y_true = tf.squeeze(y_true)
 
-        self.maes.assign_add(tf.reduce_sum(tf.abs(y_true - labels_v2)))
-        self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
+        if sample_weight is not None:
+            values = tf.abs(y_true - labels_v2)
+            sample_weight = tf.cast(sample_weight, y_pred.dtype)
+            sample_weight = tf.broadcast_to(sample_weight, values.shape)
+            values = tf.multiply(values, sample_weight)
+            self.maes.assign_add(tf.reduce_sum(values))
+            self.count.assign_add(tf.reduce_sum(sample_weight))
+        else:
+            self.maes.assign_add(tf.reduce_sum(tf.abs(y_true - labels_v2)))
+            self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
 
     def result(self):
         return tf.math.divide_no_nan(self.maes, self.count)
@@ -80,9 +86,6 @@ class SparseOrdinalMeanAbsoluteError(OrdinalMeanAbsoluteError):
           sample_weight (optional): Not implemented.
         """
 
-        if sample_weight:
-            raise NotImplementedError
-
         # Predict the label as in Cao et al. - using cumulative probabilities
         cum_probs = tf.math.cumprod(
             tf.math.sigmoid(y_pred),
@@ -104,8 +107,16 @@ class SparseOrdinalMeanAbsoluteError(OrdinalMeanAbsoluteError):
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
         y_true = tf.squeeze(y_true)
 
-        self.maes.assign_add(tf.reduce_sum(tf.abs(y_true - labels_v2)))
-        self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
+        if sample_weight is not None:
+            values = tf.abs(y_true - labels_v2)
+            sample_weight = tf.cast(sample_weight, y_pred.dtype)
+            sample_weight = tf.broadcast_to(sample_weight, values.shape)
+            values = tf.multiply(values, sample_weight)
+            self.maes.assign_add(tf.reduce_sum(values))
+            self.count.assign_add(tf.reduce_sum(sample_weight))
+        else:
+            self.maes.assign_add(tf.reduce_sum(tf.abs(y_true - labels_v2)))
+            self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
 
 class OrdinalAccuracy(tf.keras.metrics.Metric):
     """Computes accuracy for ordinal labels (tolerance is allowed rank
@@ -133,9 +144,6 @@ class OrdinalAccuracy(tf.keras.metrics.Metric):
           sample_weight (optional): Not implemented.
         """
 
-        if sample_weight:
-            raise NotImplementedError
-
         # Predict the label as in Cao et al. - using cumulative probabilities
         cum_probs = tf.math.cumprod(
             tf.math.sigmoid(y_pred),
@@ -157,10 +165,20 @@ class OrdinalAccuracy(tf.keras.metrics.Metric):
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
         y_true = tf.squeeze(y_true)
 
-        self.accs.assign_add(tf.reduce_sum(tf.cast(tf.less_equal(
-            tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
-            y_pred.dtype)))
-        self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
+        if sample_weight is not None:
+            values = tf.cast(tf.less_equal(
+                tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
+                y_pred.dtype)
+            sample_weight = tf.cast(sample_weight, y_pred.dtype)
+            sample_weight = tf.broadcast_to(sample_weight, values.shape)
+            values = tf.multiply(values, sample_weight)
+            self.accs.assign_add(tf.reduce_sum(values))
+            self.count.assign_add(tf.reduce_sum(sample_weight))
+        else:
+            self.accs.assign_add(tf.reduce_sum(tf.cast(tf.less_equal(
+                tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
+                y_pred.dtype)))
+            self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
 
     def result(self):
         return tf.math.divide_no_nan(self.accs, self.count)
@@ -190,9 +208,6 @@ class SparseOrdinalAccuracy(OrdinalAccuracy):
           sample_weight (optional): Not implemented.
         """
 
-        if sample_weight:
-            raise NotImplementedError
-
         # Predict the label as in Cao et al. - using cumulative probabilities
         cum_probs = tf.math.cumprod(
             tf.math.sigmoid(y_pred),
@@ -214,8 +229,18 @@ class SparseOrdinalAccuracy(OrdinalAccuracy):
         # remove all dimensions of size 1 (e.g., from [[1], [2]], to [1, 2])
         y_true = tf.squeeze(y_true)
 
-        self.accs.assign_add(tf.reduce_sum(tf.cast(tf.less_equal(
-            tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
-            y_pred.dtype)))
-        self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
+        if sample_weight is not None:
+            values = tf.cast(tf.less_equal(
+                tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
+                y_pred.dtype)
+            sample_weight = tf.cast(sample_weight, y_pred.dtype)
+            sample_weight = tf.broadcast_to(sample_weight, values.shape)
+            values = tf.multiply(values, sample_weight)
+            self.accs.assign_add(tf.reduce_sum(values))
+            self.count.assign_add(tf.reduce_sum(sample_weight))
+        else:
+            self.accs.assign_add(tf.reduce_sum(tf.cast(tf.less_equal(
+                tf.abs(y_true-labels_v2),tf.cast(self.tolerance,y_pred.dtype)),
+                y_pred.dtype)))
+            self.count.assign_add(tf.cast(tf.size(y_true), tf.float32))
 
