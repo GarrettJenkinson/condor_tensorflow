@@ -1,4 +1,4 @@
-condor_tensorflow version: 0.1.0-dev
+condor_tensorflow version: 1.1.0
 ## TransformerMixin
 
 *TransformerMixin()*
