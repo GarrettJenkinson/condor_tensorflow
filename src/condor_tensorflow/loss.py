@@ -1,3 +1,6 @@
+from tensorflow.python.framework import ops
+from tensorflow.python.ops import array_ops
+from tensorflow.python.ops import math_ops
 import tensorflow as tf
 from .activations import ordinal_softmax
 
@@ -29,7 +32,7 @@ class CondorNegLogLikelihood(tf.keras.losses.Loss):
         super().__init__(name=name, **kwargs)
 
     # Modifed from: https://github.com/tensorflow/tensorflow/blob/6dcd6fcea73ad613e78039bd1f696c35e63abb32/tensorflow/python/ops/nn_impl.py#L112-L148
-    def ordinal_loss(self, logits, labels):
+    def ordinal_loss(self, logits, labels, name=None):
         """ Negative log likelihood loss function designed for ordinal outcomes.
 
         Parameters
@@ -53,10 +56,12 @@ class CondorNegLogLikelihood(tf.keras.losses.Loss):
               logits = ops.convert_to_tensor(logits, dtype=tf.float32,name="logits")
           if isinstance(labels,tf.Tensor):
               labs = tf.cast(labels,dtype=tf.float32,name="labs")
-              piLab = tf.concat([tf.ones(((tf.shape(labs)[0],1)),labs[:,:-1]],axis=1,name="piLab")
+              piLab = tf.concat([tf.ones((tf.shape(labs)[0],1)),labs[:,:-1]],
+                                axis=1,name="piLab")
           else:
               labs = ops.convert_to_tensor(labels, dtype=tf.float32,name="labs")
-              piLab = tf.concat([tf.ones(((tf.shape(labs)[0],1)),labs[:,:-1]],axis=1,name="piLab")
+              piLab = tf.concat([tf.ones((tf.shape(labs)[0],1)),labs[:,:-1]],
+                                axis=1,name="piLab")
 
           # The logistic loss formula from above is
           #   x - x * z + log(1 + exp(-x))
@@ -84,7 +89,7 @@ class CondorNegLogLikelihood(tf.keras.losses.Loss):
         y_true = tf.cast(y_true, y_pred.dtype)
 
         # get number of classes
-        num_classes = tf.shape(y_pred)[1]+1/
+        num_classes = tf.shape(y_pred)[1]+1
 
         # we are not sparse here, so labels are encoded already
         tf_levels = y_true
@@ -112,9 +117,8 @@ class CondorNegLogLikelihood(tf.keras.losses.Loss):
 class SparseCondorNegLogLikelihood(CondorNegLogLikelihood):
 
     def __init__(self,
-                 importance_weights=None,
                  from_type="ordinal_logits",
-                 name="ordinal_crossent",
+                 name="ordinal_negLogLikeloss",
                  **kwargs):
         """ Negative log likelihood loss designed for ordinal outcomes.
 
@@ -131,7 +135,6 @@ class SparseCondorNegLogLikelihood(CondorNegLogLikelihood):
             automatically.
         """
         super().__init__(name=name,
-                         importance_weights=importance_weights,
                          from_type=from_type,
                          **kwargs)
 
