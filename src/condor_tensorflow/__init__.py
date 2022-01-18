@@ -1,5 +1,7 @@
 from .version import __version__
 
+from .loss import CondorNegLogLikelihood
+from .loss import SparseCondorNegLogLikelihood
 from .loss import CondorOrdinalCrossEntropy
 from .loss import SparseCondorOrdinalCrossEntropy
 from .loss import OrdinalEarthMoversDistance
@@ -14,6 +16,8 @@ from .labelencoder import CondorOrdinalEncoder
 # if somebody does "from somepackage import *", this is what they will
 # be able to access:
 __all__ = [
+    'CondorNegLogLikelihood',
+    'SparseCondorNegLogLikelihood',
     'OrdinalAccuracy',
     'SparseOrdinalAccuracy',
     'OrdinalMeanAbsoluteError',

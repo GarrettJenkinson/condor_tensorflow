@@ -20,7 +20,7 @@ SOFTWARE.
 
 
 ------------------
-Files: *.Dockerfile, docker_bashrc edited from https://github.com/tensorflow/tensorflow with following license: 
+Files: *.Dockerfile, docker_bashrc, loss.py edited from https://github.com/tensorflow/tensorflow with following license: 
 
 
 
