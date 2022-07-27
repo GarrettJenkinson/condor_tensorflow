@@ -25,6 +25,16 @@ class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
         -------
         self
         """
+        if hasattr(X, "columns"):
+            # pandas dataframes
+            self.feature_names_in_ = X.columns.tolist()
+        elif hasattr(X, "iloc"):
+            # pandas series
+            self.feature_names_in_ = [X.name]
+        elif hasattr(X, "shape") or isinstance(X, "list"):
+            # numpy array
+            self.feature_names_in_ = ["X"]
+
         if self.nclasses > 0:
             pass  # expecting 0,1,...,nclasses-1
         else:
@@ -34,15 +44,6 @@ class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
             if len(X.shape) == 1:
                 X = X.reshape(-1, 1)
             self._enc.fit(X)
-        if hasattr(X, "columns"):
-            # pandas dataframes
-            self.feature_names_in_ = X.columns.tolist()
-        elif hasattr(X, "iloc"):
-            # pandas series
-            self.feature_names_in_ = [X.name]
-        elif hasattr(X, "shape"):
-            # numpy array
-            self.feature_names_in_ = ["X"]
         return self
 
     def transform(self, X):
@@ -65,13 +66,14 @@ class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
                 X = X.reshape(-1, 1)
                 X = np.array(self._enc.transform(X)[:, 0],
                              dtype=self.dtype)
-            self.nclasses = len(self._enc.categories_[0])
+            self.nclasses_converted = len(self._enc.categories_[0])
         else:
+            self.nclasses_converted = self.nclasses
             X = np.array(X, dtype=self.dtype)
 
         # now X always has values 0,1,...,nclasses-1
         # first make one-hot encoding
-        X_out = np.zeros((X.shape[0], self.nclasses))
+        X_out = np.zeros((X.shape[0], self.nclasses_converted))
         X_out[np.arange(X.size), X] = 1
 
         # now drop first column
