@@ -31,7 +31,7 @@ class CondorOrdinalEncoder(BaseEstimator, TransformerMixin):
         elif hasattr(X, "iloc"):
             # pandas series
             self.feature_names_in_ = [X.name]
-        elif hasattr(X, "shape") or isinstance(X, "list"):
+        elif hasattr(X, "shape") or isinstance(X, list):
             # numpy array
             self.feature_names_in_ = ["X"]
 
